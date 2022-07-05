@@ -1,13 +1,7 @@
 #FROM node:16.14.0-buster-slim
 FROM ubuntu:20.04
 
-#RUN groupmod -g 1003 node && usermod -u 1003 -g 1003 node
-
-# good: 0.13.6, 0.14.2
-# Carl used 14.2
-ENV NODE_VERSION 14.17.0
 ENV PURESCRIPT_VERSION 0.14.2
-ENV ARCH x64
 
 ARG UNAME=aryzach
 ARG UID=1001
@@ -21,9 +15,9 @@ RUN apt-get install -y sudo
 RUN apt-get install -y git
 RUN apt install -y tmux
 RUN apt install -y vim
-RUN apt install -y curl
 RUN apt install -y wget
 
+# for node version (14.17.0) that works with needed purescript version (0.14.2)
 RUN wget -qO- https://deb.nodesource.com/setup_14.x | sudo bash -
 RUN apt install -y nodejs
 
