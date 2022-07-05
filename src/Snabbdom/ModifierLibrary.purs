@@ -1,4 +1,4 @@
-module Snubbdom.ModifierLibrary where
+module Snabbdom.ModifierLibrary where
 
 import Prelude 
 import Effect (Effect)

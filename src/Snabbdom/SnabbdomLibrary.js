@@ -21,7 +21,7 @@ exports.patch_ = function(oldVnode, newVnode) {
 }
 exports.patchInit_ = exports.patch_;
 
-exports.thunkSnabbdom_ = function(tag, key, thunk, args) {
+exports.thunkJavascript_ = function(tag, key, thunk, args) {
     return snabbdom.thunk(tag, key, uncurry(thunk), args);
 };
 

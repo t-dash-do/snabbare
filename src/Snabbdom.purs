@@ -1,6 +1,6 @@
-module Snubbdom (module Public) where
+module Snabbdom (module Public) where
 
-import Snubbdom.ModifierLibrary (
+import Snabbdom.ModifierLibrary (
   key,
   attribute,
   property,
@@ -9,17 +9,17 @@ import Snubbdom.ModifierLibrary (
   style
   ) as Public
 
-import Snubbdom.ElementConstructors (
+import Snabbdom.ElementConstructors (
   elementConstructor,
   text,
   queueElement
   ) as Public
 
-import Snubbdom.Element (
+import Snabbdom.Element (
   Element
   ) as Public
 
-import Snubbdom.Property (
+import Snabbdom.Property (
   acceptCharset,
   accessKey,
   className,
@@ -34,7 +34,7 @@ import Snubbdom.Property (
   useMap
   ) as Public
 
-import Snubbdom.Attribute (
+import Snabbdom.Attribute (
   accept,
   acceptcharset,
   accesskey,
@@ -203,7 +203,7 @@ import Snubbdom.Attribute (
   wrap
   ) as Public
 
-import Snubbdom.OnMouse (
+import Snabbdom.OnMouse (
   onClick,
   onDoubleClick,
   onMouseDown,
@@ -215,7 +215,7 @@ import Snubbdom.OnMouse (
   onMouseOut
   ) as Public
 
-import Snubbdom.Tag (
+import Snabbdom.Tag (
   a,
   abbr,
   address,

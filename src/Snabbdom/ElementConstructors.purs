@@ -1,7 +1,7 @@
-module Snubbdom.ElementConstructors where
+module Snabbdom.ElementConstructors where
 
-import Snubbdom.Element (Element(..), ElementChildren)
-import Snubbdom.ModifierLibrary (Modifiers)
+import Snabbdom.Element (Element(..), ElementChildren)
+import Snabbdom.ModifierLibrary (Modifiers)
 
 type ElementConstructor a msg = Modifiers msg -> ElementChildren a msg -> Element a msg
 

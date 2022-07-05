@@ -1,8 +1,8 @@
-module Snubbdom.Element where
+module Snabbdom.Element where
 
 import Prelude (class Functor, map)
 import Data.Function.Uncurried (Fn3, runFn3)
-import Snubbdom.ModifierLibrary (Modifiers, SnabbdomModifiers, UpdateAndView, createSnabbdomModifiers)
+import Snabbdom.ModifierLibrary (Modifiers, SnabbdomModifiers, UpdateAndView, createSnabbdomModifiers)
 
 foreign import data ThunkArgs :: Type 
 
@@ -10,7 +10,6 @@ foreign import createThunkArgs_ :: forall a msg. Fn3 (a -> Element a msg) a (Upd
 createThunkArgs :: forall a msg. (a -> Element a msg) -> a -> UpdateAndView msg -> ThunkArgs 
 createThunkArgs = runFn3 createThunkArgs_
 
--- Snubbdom Element
 data Element a msg = 
     Element { tag :: String, modifiers :: Modifiers msg, children :: (ElementChildren a msg) } 
     | ElementString String
