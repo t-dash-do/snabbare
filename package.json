@@ -1,25 +1,14 @@
 {
   "name": "purescript-snabbdom",
-  "version": "0.1.0",
-  "license": "SPDX(MIT)",
-  "author": "Zach Smith zach_asmith@yahoo.com https://aryzach.github.io",
+  "version": "1.0.0",
   "description": "A Purescript wrapper the Snabbdom virtual DOM library",
-  "files": [
-    "package.json",
-    "index.js"
-  ],
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
-    "live": "pulp --watch --before 'clear' build",
-    "serve": "http-server",
-    "setup": "npm install && bower install",
-    "clean": "rm -rf bower_components && rm -rf node_modules && rm -rf output",
-    "browse": "pulp --watch browserify --to index.js",
-    "dev": "pulp --watch browserify --to index.js && http-server"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "snabbdom": "^0.7.1"
-  },
-  "devDependencies": {
-    "pulp": "^12.3.0"
-  }
+  "author": "Zach Smith zach_asmith@yahoo.com https://aryzach.github.io",
+  "license": "MIT"
 }
