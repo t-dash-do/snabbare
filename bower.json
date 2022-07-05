@@ -1,0 +1,19 @@
+{
+  "name": "purescript-snabbdom",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-prelude": "^6.0.0",
+    "purescript-console": "^6.0.0",
+    "purescript-effect": "^4.0.0",
+    "purescript-web-dom": "^6.0.0",
+    "purescript-web-html": "^4.0.0",
+    "purescript-nullable": "^6.0.0"
+  },
+  "devDependencies": {
+  }
+}
