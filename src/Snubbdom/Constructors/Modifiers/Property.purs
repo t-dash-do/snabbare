@@ -1,7 +1,6 @@
 module Snubbdom.Property where
 
 import Prelude (($))
-import Data.Array as Array
 import Data.String as String
 import Snubbdom.ModifierLibrary (property, Modifier)
 

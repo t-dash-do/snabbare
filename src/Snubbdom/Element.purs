@@ -1,8 +1,8 @@
 module Snubbdom.Element where
 
-import Prelude 
-import Data.Function.Uncurried (Fn1, Fn2, Fn3, runFn1, runFn2, runFn3)
-import Snubbdom.ModifierLibrary 
+import Prelude (class Functor, map)
+import Data.Function.Uncurried (Fn3, runFn3)
+import Snubbdom.ModifierLibrary (Modifiers, SnabbdomModifiers, UpdateAndView, createSnabbdomModifiers)
 
 foreign import data ThunkArgs :: Type 
 

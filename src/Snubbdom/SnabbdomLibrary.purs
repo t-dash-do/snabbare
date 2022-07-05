@@ -1,6 +1,6 @@
 module Snubbdom.Library where
 
-import Prelude 
+import Prelude (bind, map, pure, ($))
 import Data.Function.Uncurried (Fn3, Fn4, runFn3, runFn4)
 import Data.Nullable as Nullable
 import Data.Maybe (Maybe)
@@ -9,8 +9,8 @@ import Effect.Uncurried (EffectFn1, EffectFn2, runEffectFn1, runEffectFn2)
 import Unsafe.Coerce (unsafeCoerce)
 import Web.DOM as Web
 
-import Snubbdom.ModifierLibrary
-import Snubbdom.Element 
+import Snubbdom.ModifierLibrary (SnabbdomModifiers, UpdateAndView)
+import Snubbdom.Element (Element, ThunkArgs, VNode(..), elementToVNode)
 
 foreign import data SnabbdomVNode :: Type
 type ThunkSnubbdom a msg = forall a msg. (a -> Element a msg) -> a -> UpdateAndView msg -> SnabbdomVNode
