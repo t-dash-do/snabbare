@@ -1,7 +1,7 @@
 {
   "name": "purescript-snabbdom",
   "version": "0.1.0",
-  "license": "MIT",
+  "license": "SPDX(MIT)",
   "author": "Zach Smith zach_asmith@yahoo.com https://aryzach.github.io",
   "description": "A Purescript wrapper the Snabbdom virtual DOM library",
   "files": [
