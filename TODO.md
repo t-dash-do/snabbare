@@ -1,4 +1,5 @@
 ### Todo:
+- purescript-snabbdom name already take, I should look at that code, but change my names to say snubbdom (files, docs, datatypes, functions, etc)
 - write comments and API usage docs
 - add tests 
 - setup CI

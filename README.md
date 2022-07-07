@@ -7,18 +7,18 @@
 
 A type-safe library wrapper for Snabbdom, a virtual DOM library.
 
-[Docs](https://pursuit.purescript.org/packages/purescript-snabbdom)
+[Docs](https://pursuit.purescript.org/packages/purescript-snubbdom)
 
 
 The general use of this library: 
 - build up an `Element` which constists of 
- * an HTML tag 
- * an array of 'modifiers' which consists of both HTML attributes and DOM properties
- * and an array of child Elements
+  * an HTML tag 
+  * an array of 'modifiers' which consists of both HTML attributes and DOM properties
+  * and an array of child Elements
 - call elementToSnabbdomVNode with
- * the Element created above
- * function that takes any message (generally a custom sum type) and updates application state and renders that updated state
+  * the Element created above
+  * function that takes any message (generally a custom sum type) and updates application state and renders that updated state
 - call patch with
- * the output of elementToSnabbdomVNode
- * and the previous output of elementToSnabbdomVNode from a prior application state
+  * the output of elementToSnabbdomVNode
+  * and the previous output of elementToSnabbdomVNode from a prior application state
 
