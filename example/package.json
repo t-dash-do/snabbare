@@ -1,0 +1,12 @@
+{
+  "name": "test-example",
+  "version": "0.1.0",
+  "files": [
+    "package.json",
+    "index.js"
+  ],
+  "dependencies": {
+    "snabbdom": "^0.7.1",
+    "snabbdom-transition": "^0.2.0"
+  }
+}

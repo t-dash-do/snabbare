@@ -22,3 +22,7 @@ The general use of this library:
   * the output of elementToSnabbdomVNode
   * and the previous output of elementToSnabbdomVNode from a prior application state
 
+
+TODO:
+- add docs
+- add examples
