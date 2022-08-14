@@ -1,77 +1,62 @@
 FROM ubuntu:20.04
 
 ENV PURESCRIPT_VERSION 0.14.2
-
-ARG UNAME=aryzach
-ARG UID=1001
-ARG GID=1001
-RUN groupadd -g $GID -o $UNAME
-RUN useradd -m -u $UID -g $GID -o -s /bin/bash $UNAME
+ARG EXAMPLE
 
 # packages for dev environment
 RUN apt-get update 
 RUN apt-get install -y sudo
 RUN apt-get install -y git
-RUN apt install -y tmux
-RUN apt install -y vim
 RUN apt install -y wget
-RUN apt install make
 
 # for node version (14.17.0) that works with needed purescript version (0.14.2)
 RUN wget -qO- https://deb.nodesource.com/setup_14.x | sudo bash -
 RUN apt install -y nodejs
 
-# for purescript
+# dependancies needed for purescript (unsure if git is needed)
 RUN apt update \
     && apt install -y git libtinfo5 
 
+# purescipt build tools
 RUN npm install -g purescript@$PURESCRIPT_VERSION --unsafe-perm 
-RUN	npm install -g pulp
 RUN	npm install -g bower 
-RUN npm install -g browserify
 RUN npm install -g spago --unsafe-perm
+
+# general browers build and serve tools
+RUN npm install -g browserify
+RUN npm install -g http-server
 
 #smoke tests
 RUN purs --version 
 
-RUN npm install -g http-server
-RUN npm install -g purs-tidy
-
-# setup env
-USER aryzach
-WORKDIR /home/aryzach/
-RUN git clone https://github.com/aryzach/dotfiles.git
-WORKDIR /home/aryzach/dotfiles
-RUN /home/aryzach/dotfiles/setup.sh
-WORKDIR /home/aryzach/
-CMD /bin/bash -i "/home/aryzach/.bashrc"
-
 # create the project
+WORKDIR /
 RUN mkdir example-project
-WORKDIR /home/aryzach/example-project/
+WORKDIR /example-project/
 RUN spago init
 
-# replace files in project 
-ADD example-resources/index.html /home/aryzach/example-project/
-ADD example-resources/package.json /home/aryzach/example-project/
-ADD example-resources/packages.dhall /home/aryzach/example-project/
-ADD example-resources/spago-project.dhall /home/aryzach/example-project/spago.dhall
-ADD example-resources/examples/Counter.purs /home/aryzach/example-project/src/Main.purs
-ADD example-resources/Framework.purs /home/aryzach/example-project/src/
+# replace files in spago project with (this is probably not the best way to do this, but wanted to show how to go from 'spago init' to a working example)
+ADD example-resources/index.html /example-project/
+ADD example-resources/package.json /example-project/
+ADD example-resources/packages.dhall /example-project/
+ADD example-resources/spago-project.dhall /example-project/spago.dhall
+ADD example-resources/examples/$EXAMPLE /example-project/src/Main.purs
+ADD example-resources/Framework.purs /example-project/src/
+ADD . /example-project/snubbdom
+ADD example-resources/spago-library.dhall /example-project/snubbdom/spago.dhall
 
-ADD . /home/aryzach/example-project/snubbdom
-ADD Makefile .
-ADD example-resources/spago-library.dhall /home/aryzach/example-project/snubbdom/spago.dhall
-
-USER root
-RUN chown -R aryzach:aryzach /home/aryzach/
-
-USER aryzach
+# build the example project
 RUN npm install 
 RUN spago build
+RUN spago bundle-app --no-install --main Main --to build/index.js 
+RUN browserify build/index.js -o build/bundle.js
 
-# docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t test-example --file Dockerfile-example .
-# docker run --net=host -it test-example /bin/bash
+# serve the example project
+ENTRYPOINT http-server
+
+
+# docker build --build-arg EXAMPLE=Counter.purs -t test-example --file Dockerfile-example .
+# docker run -p 8080:8080 -it test-example /bin/bash
 # docker start -i -a test-example
 
 

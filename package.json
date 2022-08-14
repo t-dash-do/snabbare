@@ -5,14 +5,6 @@
   "main": "index.js",
   "author": "Zach Smith zach_asmith@yahoo.com https://aryzach.github.io",
   "license": "MIT",
-  "scripts": {
-    "live": "pulp --watch --before 'clear' build",
-    "serve": "http-server",
-    "setup": "npm install && bower install",
-    "clean": "rm -rf bower_components && rm -rf node_modules && rm -rf output",
-    "browse": "pulp --watch browserify --to index.js",
-    "dev": "pulp --watch browserify --to index.js && http-server"
-  },
   "dependencies": {
     "snabbdom": "^0.7.1"
   },
