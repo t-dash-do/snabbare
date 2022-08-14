@@ -1,4 +1,4 @@
-module AffjaxExample where
+module Main where
 
 import Prelude
 
@@ -7,6 +7,8 @@ import Affjax.ResponseFormat as ResponseFormat
 import Data.Either (Either(..))
 import Effect (Effect)
 import Data.Tuple (Tuple(..))
+
+import Framework as F
 
 import Snubbdom as H
 
@@ -66,4 +68,4 @@ view model = H.main [H.id "main"] [
 
 main :: Effect Unit
 main = do
-  H.mount "main" { init, update, view }
+  F.mount "main" { init, update, view }

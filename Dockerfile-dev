@@ -1,4 +1,3 @@
-#FROM node:16.14.0-buster-slim
 FROM ubuntu:20.04
 
 ENV PURESCRIPT_VERSION 0.14.2
@@ -25,14 +24,18 @@ RUN apt install -y nodejs
 RUN apt update \
     && apt install -y git libtinfo5 
 
+# purescipt build tools
 RUN npm install -g purescript@$PURESCRIPT_VERSION --unsafe-perm 
-RUN	npm install -g pulp
 RUN	npm install -g bower 
+RUN	npm install -g pulp
+RUN npm install -g spago --unsafe-perm
+
+# general browers build and serve tools
+RUN npm install -g browserify
+RUN npm install -g http-server
+
 #smoke tests
 RUN purs --version 
-
-RUN npm install -g http-server
-RUN npm install -g purs-tidy
 
 # setup env
 USER aryzach
@@ -43,7 +46,7 @@ RUN /home/aryzach/dotfiles/setup.sh
 WORKDIR /home/aryzach/
 CMD /bin/bash -i "/home/aryzach/.bashrc"
 
-# docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t snubbdom .
+# docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg UNAME=$(whoami) -t snubbdom .
 # docker run --net=host -itv `pwd`:/home/aryzach/snubbdom snubbdom /bin/bash
 # docker start -i -a snubbdom
 

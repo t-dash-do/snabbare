@@ -23,6 +23,4 @@ The general use of this library:
   * and the previous output of elementToSnubbdomVNode from a prior application state
 
 
-TODO:
-- add docs
-- add examples
+
