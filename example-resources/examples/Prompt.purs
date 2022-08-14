@@ -1,5 +1,5 @@
---module Main where
-module Prompt where
+module Main where
+--module Prompt where
 
 import Prelude
 

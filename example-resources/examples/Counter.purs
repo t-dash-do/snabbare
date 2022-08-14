@@ -1,9 +1,12 @@
-module Counter where
+--module Counter where
+module Main where
 
 import Prelude
 
 import Effect (Effect)
 import Data.Tuple (Tuple(..))
+
+import Framework as F
 
 import Snubbdom (
   Element,
@@ -12,8 +15,7 @@ import Snubbdom (
   text, 
   id,
   button,
-  onClick,
-  mount
+  onClick
   ) as H
 
 infixr 6 Tuple as :>
@@ -39,7 +41,7 @@ view model = H.main [H.id "main"] [
 
 main :: Effect Unit
 main = do
-  H.mount "main" {
+  F.mount "main" {
     init: init :> [],
     update: \msg model -> update msg model :> [],
     view

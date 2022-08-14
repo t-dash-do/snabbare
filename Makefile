@@ -28,8 +28,8 @@ serve:
 
 #this is the better build commands
 dev: 
-	spago bundle-app --watch --clear-screen --no-install --main Main --to build/index.js --then 'npm run browserify && npm run parcel'
+	spago bundle-app --watch --clear-screen --no-install --main Main --to build/index.js --then 'make browserify && make parcel'
 
 dev-snubbdom: 
-	npm run delete-snubbdom && npm run setup && npm run dev
+	make delete-snubbdom && make setup && make dev
 

@@ -1,8 +1,8 @@
-module Snabbdom.Element where
+module Snubbdom.Element where
 
 import Prelude (class Functor, map)
 import Data.Function.Uncurried (Fn3, runFn3)
-import Snabbdom.ModifierLibrary (Modifiers, SnabbdomModifiers, UpdateAndView, createSnabbdomModifiers)
+import Snubbdom.ModifierLibrary (Modifiers, SnubbdomModifiers, UpdateAndView, createSnubbdomModifiers)
 
 foreign import data ThunkArgs :: Type 
 
@@ -33,7 +33,7 @@ instance functorElement :: Functor (Element a) where
 
 -- never create this manually. Use elementToVNode instead
 data VNode = 
-    VNode { tag :: String, modifiers :: SnabbdomModifiers, children :: VNodeChildren } 
+    VNode { tag :: String, modifiers :: SnubbdomModifiers, children :: VNodeChildren } 
     | VNodeString String
     | VNodeQueue { tag :: String, key :: String, args :: ThunkArgs }
 
@@ -43,7 +43,7 @@ elementToVNode :: forall a msg. UpdateAndView msg -> (Element a msg) -> VNode
 elementToVNode updateAndView (Element { tag, modifiers, children }) = 
     VNode { 
           tag: tag, 
-          modifiers: (createSnabbdomModifiers updateAndView modifiers), 
+          modifiers: (createSnubbdomModifiers updateAndView modifiers), 
           children: (map (elementToVNode updateAndView) children) 
           }
 elementToVNode _ (ElementString s) = VNodeString s 

@@ -1,5 +1,5 @@
---module Main where
-module Dice where
+module Main where
+--module Dice where
 
 import Prelude
 

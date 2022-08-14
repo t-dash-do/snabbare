@@ -24,15 +24,15 @@ exports.mapModifier_ = function(fn, modifier) {
 
 
 // UpdateAndView msg -> Array Modifier -> { attrs: , etc }
-exports.createSnabbdomModifiers_ = function(updateAndView, modifiers) {
+exports.createSnubbdomModifiers_ = function(updateAndView, modifiers) {
     const snabbdomModifiers = modifiers.reduce(
-        (acc, modifier) => createSnabbdomModifier(updateAndView, acc, modifier),
+        (acc, modifier) => createSnubbdomModifier(updateAndView, acc, modifier),
         {}
     );
     return snabbdomModifiers;
 }
 
-const createSnabbdomModifier = function(updateAndView, acc, modifier) {
+const createSnubbdomModifier = function(updateAndView, acc, modifier) {
     const type  = modifier.type;
     const key   = modifier.key;
     const value = modifier.value;

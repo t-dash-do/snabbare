@@ -1,5 +1,5 @@
-module TestQueue where
---module Main where
+--module TestQueue where
+module Main where
 
 -- https://github.com/krausest/js-framework-benchmark
 

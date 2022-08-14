@@ -1,6 +1,6 @@
-module Snabbdom.Tag where
+module Snubbdom.Tag where
 
-import Snabbdom.ElementConstructors (elementConstructor, ElementConstructor)
+import Snubbdom.ElementConstructors (elementConstructor, ElementConstructor)
 
 a :: forall a msg. ElementConstructor a msg
 a = elementConstructor "a"

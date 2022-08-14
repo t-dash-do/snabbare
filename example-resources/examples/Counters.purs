@@ -1,5 +1,5 @@
---module Main where
-module Counters where
+module Main where
+--module Counters where
 
 import Prelude
 

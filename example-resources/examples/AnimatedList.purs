@@ -1,5 +1,5 @@
-module AnimatedList where
---module Main where
+--module AnimatedList where
+module Main where
 
 import Prelude
 

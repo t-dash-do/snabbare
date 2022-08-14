@@ -1,7 +1,7 @@
-module Snabbdom.OnMouse where
+module Snubbdom.OnMouse where
 
 --import Prelude
-import Snabbdom.ModifierLibrary (onMouse, Modifier)
+import Snubbdom.ModifierLibrary (onMouse, Modifier)
 
 type OnMouse = forall msg. msg -> (Modifier msg)
 

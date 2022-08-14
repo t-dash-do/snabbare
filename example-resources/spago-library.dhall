@@ -10,21 +10,15 @@ When creating a new Spago project, you can use
 `spago init --no-comments` or `spago init -C`
 to generate this file without the comments in this block.
 -}
-{ name = "my-project"
+{ name = "snubbdom"
 , dependencies =
   [ "aff"
-  , "affjax"
-  , "arrays"
   , "console"
   , "effect"
-  , "either"
   , "integers"
-  , "maybe"
+  , "nullable"
   , "prelude"
-  , "random"
-  , "snubbdom"
-  , "tuples"
-  , "unfoldable"
+  , "psci-support"
   , "web-dom"
   , "web-events"
   , "web-html"

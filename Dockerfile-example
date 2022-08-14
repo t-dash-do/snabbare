@@ -15,6 +15,7 @@ RUN apt-get install -y git
 RUN apt install -y tmux
 RUN apt install -y vim
 RUN apt install -y wget
+RUN apt install make
 
 # for node version (14.17.0) that works with needed purescript version (0.14.2)
 RUN wget -qO- https://deb.nodesource.com/setup_14.x | sudo bash -
@@ -27,6 +28,9 @@ RUN apt update \
 RUN npm install -g purescript@$PURESCRIPT_VERSION --unsafe-perm 
 RUN	npm install -g pulp
 RUN	npm install -g bower 
+RUN npm install -g browserify
+RUN npm install -g spago --unsafe-perm
+
 #smoke tests
 RUN purs --version 
 
@@ -42,15 +46,32 @@ RUN /home/aryzach/dotfiles/setup.sh
 WORKDIR /home/aryzach/
 CMD /bin/bash -i "/home/aryzach/.bashrc"
 
-#ADD example/build .
-#ADD example/index.html .
-#ADD example/package.json .
-#ADD example/packages.dhall .
-#ADD example/spago.dhall .
+# create the project
+RUN mkdir example-project
+WORKDIR /home/aryzach/example-project/
+RUN spago init
 
+# replace files in project 
+ADD example-resources/index.html /home/aryzach/example-project/
+ADD example-resources/package.json /home/aryzach/example-project/
+ADD example-resources/packages.dhall /home/aryzach/example-project/
+ADD example-resources/spago-project.dhall /home/aryzach/example-project/spago.dhall
+ADD example-resources/examples/Counter.purs /home/aryzach/example-project/src/Main.purs
+ADD example-resources/Framework.purs /home/aryzach/example-project/src/
+
+ADD . /home/aryzach/example-project/snubbdom
+ADD Makefile .
+ADD example-resources/spago-library.dhall /home/aryzach/example-project/snubbdom/spago.dhall
+
+USER root
+RUN chown -R aryzach:aryzach /home/aryzach/
+
+USER aryzach
+RUN npm install 
+RUN spago build
 
 # docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t test-example --file Dockerfile-example .
-# docker run --net=host -itv `pwd`:/home/aryzach/test-example test-example /bin/bash
+# docker run --net=host -it test-example /bin/bash
 # docker start -i -a test-example
 
 

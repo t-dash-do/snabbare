@@ -1,11 +1,11 @@
-# Purescript-Snabbdom
+# Purescript-Snubbdom
 
 ![GitHub](https://img.shields.io/github/license/aryzach/purescript-snabbdom)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/aryzach/purescript-snabbdom)
 [![Pursuit](https://pursuit.purescript.org/packages/purescript-snabbdom/badge)](https://pursuit.purescript.org/packages/purescript-snabbdom)
 [![Maintainer: aryzach](https://img.shields.io/badge/maintainer-aryzach-blue)](https://github.com/aryzach)
 
-A type-safe library wrapper for Snabbdom, a virtual DOM library.
+A type-safe library wrapper for Snubbdom, a virtual DOM library.
 
 [Docs](https://pursuit.purescript.org/packages/purescript-snubbdom)
 
@@ -15,12 +15,12 @@ The general use of this library:
   * an HTML tag 
   * an array of 'modifiers' which consists of both HTML attributes and DOM properties
   * and an array of child Elements
-- call elementToSnabbdomVNode with
+- call elementToSnubbdomVNode with
   * the Element created above
   * function that takes any message (generally a custom sum type) and updates application state and renders that updated state
 - call patch with
-  * the output of elementToSnabbdomVNode
-  * and the previous output of elementToSnabbdomVNode from a prior application state
+  * the output of elementToSnubbdomVNode
+  * and the previous output of elementToSnubbdomVNode from a prior application state
 
 
 TODO:

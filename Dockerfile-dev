@@ -43,8 +43,8 @@ RUN /home/aryzach/dotfiles/setup.sh
 WORKDIR /home/aryzach/
 CMD /bin/bash -i "/home/aryzach/.bashrc"
 
-# docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t purescript-snabbdom .
-# docker run --net=host -itv `pwd`:/home/aryzach/purescript-snabbdom purescript-snabbdom /bin/bash
-# docker start -i -a purescript-snabbdom
+# docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t snubbdom .
+# docker run --net=host -itv `pwd`:/home/aryzach/snubbdom snubbdom /bin/bash
+# docker start -i -a snubbdom
 
 
