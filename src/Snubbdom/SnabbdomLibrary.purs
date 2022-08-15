@@ -12,23 +12,23 @@ import Web.DOM as Web
 import Snubbdom.ModifierLibrary (SnubbdomModifiers, UpdateAndView)
 import Snubbdom.Element (Element, ThunkArgs, VNode(..), elementToVNode)
 
-foreign import data SnubbdomVNode :: Type
-type ThunkPurescript a msg = forall a msg. (a -> Element a msg) -> a -> UpdateAndView msg -> SnubbdomVNode
+foreign import data SnabbdomVNode :: Type
+type ThunkPurescript a msg = forall a msg. (a -> Element a msg) -> a -> UpdateAndView msg -> SnabbdomVNode
 
 -- FFI
-foreign import patch_ :: EffectFn2 SnubbdomVNode SnubbdomVNode SnubbdomVNode
-foreign import patchInit_ :: EffectFn2 Web.Element SnubbdomVNode SnubbdomVNode
-foreign import h_ :: Fn3 String SnubbdomModifiers (Array SnubbdomVNode) SnubbdomVNode
+foreign import patch_ :: EffectFn2 SnabbdomVNode SnabbdomVNode SnabbdomVNode
+foreign import patchInit_ :: EffectFn2 Web.Element SnabbdomVNode SnabbdomVNode
+foreign import h_ :: Fn3 String SnubbdomModifiers (Array SnabbdomVNode) SnabbdomVNode
 foreign import querySelector_ :: EffectFn1 String (Nullable.Nullable Web.Element)
-foreign import thunkJavascript_ :: forall a msg. Fn4 String String (ThunkPurescript a msg) ThunkArgs SnubbdomVNode
+foreign import thunkJavascript_ :: forall a msg. Fn4 String String (ThunkPurescript a msg) ThunkArgs SnabbdomVNode
 
-patchInit :: Web.Element -> SnubbdomVNode -> Effect SnubbdomVNode
+patchInit :: Web.Element -> SnabbdomVNode -> Effect SnabbdomVNode
 patchInit = runEffectFn2 patchInit_ 
 
-patch :: SnubbdomVNode -> SnubbdomVNode -> Effect SnubbdomVNode
+patch :: SnabbdomVNode -> SnabbdomVNode -> Effect SnabbdomVNode
 patch = runEffectFn2 patch_ 
 
-h :: VNode -> SnubbdomVNode
+h :: VNode -> SnabbdomVNode
 h (VNode { tag, modifiers, children }) = runFn3 h_ 
     tag
     modifiers
@@ -36,11 +36,11 @@ h (VNode { tag, modifiers, children }) = runFn3 h_
 h (VNodeString s) = unsafeCoerce s
 h (VNodeQueue { tag, key, args }) = runFn4 thunkJavascript_ tag key thunkPurescript args
 
-elementToSnubbdomVNode :: forall a msg. UpdateAndView msg -> Element a msg -> SnubbdomVNode
-elementToSnubbdomVNode updateAndView e = h $ elementToVNode updateAndView e
+elementToSnabbdomVNode :: forall a msg. UpdateAndView msg -> Element a msg -> SnabbdomVNode
+elementToSnabbdomVNode updateAndView e = h $ elementToVNode updateAndView e
 
 thunkPurescript :: forall a msg. ThunkPurescript a msg
-thunkPurescript fn arg updateAndView = elementToSnubbdomVNode updateAndView $ fn arg
+thunkPurescript fn arg updateAndView = elementToSnabbdomVNode updateAndView $ fn arg
 
 querySelector :: String -> Effect (Maybe Web.Element)
 querySelector s = do
