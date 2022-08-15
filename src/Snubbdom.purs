@@ -215,6 +215,11 @@ import Snubbdom.OnMouse (
   onMouseOut
   ) as Public
 
+import Snubbdom.OnForm (
+  onSubmit,
+  onInput
+  ) as Public
+
 import Snubbdom.Tag (
   a,
   abbr,
