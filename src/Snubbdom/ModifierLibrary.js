@@ -11,10 +11,15 @@ exports.mapModifier_ = function(fn, modifier) {
     const key   = modifier.key;
     const value = modifier.value;
 
-    
     switch (type) {
         case "form":
-            return Object.assign({}, modifier, { value: fn(value) });
+          switch (key) {
+            case "input":
+              return Object.assign({}, modifier, { value: function (event) { return fn(value(event)); } });
+            default:
+              return Object.assign({}, modifier, { value: fn(value) });
+            };
+
         case "mouse":
             return Object.assign({}, modifier, { value: fn(value) });
     };

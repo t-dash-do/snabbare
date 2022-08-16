@@ -4,8 +4,6 @@ import Snubbdom.ModifierLibrary (
   key,
   attribute,
   property,
-  onMouse,
-  onForm,
   style
   ) as Public
 
