@@ -1,10 +1,11 @@
 module Snubbdom.Attribute where
 
 --import Prelude
-import Snubbdom.ModifierLibrary (attribute, attributeBoolean, Modifier)
+import Snubbdom.ModifierLibrary (attribute, attributeBoolean, attributeInt, Modifier)
 
-type Attribute = forall msg. String -> (Modifier msg)
-type AttributeBoolean = forall msg. Boolean -> (Modifier msg)
+type Attribute = forall msg. String -> Modifier msg
+type AttributeBoolean = forall msg. Boolean -> Modifier msg
+type AttributeInt = forall msg. Int -> Modifier msg
 
 accept :: Attribute
 accept = attribute "accept"
@@ -57,11 +58,11 @@ class' = attribute "class"
 color :: Attribute
 color = attribute "color"
 
-cols :: Attribute
-cols = attribute "cols"
+cols :: AttributeInt
+cols = attributeInt "cols"
 
-colspan :: Attribute
-colspan = attribute "colspan"
+colspan :: AttributeInt
+colspan = attributeInt "colspan"
 
 content :: Attribute
 content = attribute "content"
@@ -120,8 +121,8 @@ formaction = attribute "formaction"
 headers :: Attribute
 headers = attribute "headers"
 
-height :: Attribute
-height = attribute "height"
+height :: AttributeInt
+height = attributeInt "height"
 
 hidden :: AttributeBoolean
 hidden = attributeBoolean "hidden"
@@ -165,8 +166,8 @@ low = attribute "low"
 max :: Attribute
 max = attribute "max"
 
-maxlength :: Attribute
-maxlength = attribute "maxlength"
+maxlength :: AttributeInt
+maxlength = attributeInt "maxlength"
 
 media :: Attribute
 media = attribute "media"
@@ -429,11 +430,11 @@ required = attributeBoolean "required"
 reversed :: AttributeBoolean
 reversed = attributeBoolean "reversed"
 
-rows :: Attribute
-rows = attribute "rows"
+rows :: AttributeInt
+rows = attributeInt "rows"
 
-rowspan :: Attribute
-rowspan = attribute "rowspan"
+rowspan :: AttributeInt
+rowspan = attributeInt "rowspan"
 
 sandbox :: Attribute
 sandbox = attribute "sandbox"
@@ -447,8 +448,8 @@ selected = attributeBoolean "selected"
 shape :: Attribute
 shape = attribute "shape"
 
-size :: Attribute
-size = attribute "size"
+size :: AttributeInt
+size = attributeInt "size"
 
 sizes :: Attribute
 sizes = attribute "sizes"
@@ -471,14 +472,14 @@ srclang = attribute "srclang"
 srcset :: Attribute
 srcset = attribute "srcset"
 
-start :: Attribute
-start = attribute "start"
+start :: AttributeInt
+start = attributeInt "start"
 
 step :: Attribute
 step = attribute "step"
 
-tabindex :: Attribute
-tabindex = attribute "tabindex"
+tabindex :: AttributeInt
+tabindex = attributeInt "tabindex"
 
 target :: Attribute
 target = attribute "target"
@@ -498,8 +499,8 @@ usemap = attribute "usemap"
 value :: Attribute
 value = attribute "value"
 
-width :: Attribute
-width = attribute "width"
+width :: AttributeInt
+width = attributeInt "width"
 
 wrap :: Attribute
 wrap = attribute "wrap"
