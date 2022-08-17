@@ -40,7 +40,7 @@ onForm = runFn3 createModifier_ "form"
 onMouse :: forall msg. String -> msg -> Modifier msg
 onMouse = runFn3 createModifier_ "mouse" 
 
-style :: forall msg. Tuple String String -> Modifier msg
-style (Tuple name value) = runFn3 createModifier_ "style" name value
+style :: forall msg. String -> String -> Modifier msg
+style name value = runFn3 createModifier_ "style" name value
 
 

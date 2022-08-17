@@ -1,10 +1,20 @@
 module Snubbdom (module Public) where
 
+import Snubbdom.SnabbdomLibrary ( 
+  patchInit,
+  patch,
+  elementToSnabbdomVNode,
+  querySelector 
+  ) as Public
+
 import Snubbdom.ModifierLibrary (
+  Modifier,
   key,
   attribute,
   property,
-  style
+  style,
+  onForm,
+  onMouse
   ) as Public
 
 import Snubbdom.ElementConstructors (

@@ -1,4 +1,4 @@
-module Snubbdom.Library where
+module Snubbdom.SnabbdomLibrary where
 
 import Prelude (bind, map, pure, ($))
 import Data.Function.Uncurried (Fn3, Fn4, runFn3, runFn4)

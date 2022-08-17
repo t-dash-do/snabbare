@@ -15,4 +15,6 @@ index.js
 /.parcel-cache
 build/*
 dist/*
-
+spago.dhall
+packages.dhall
+package-lock.json
