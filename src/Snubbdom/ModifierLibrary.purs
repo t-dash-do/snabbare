@@ -31,6 +31,9 @@ property key' value = runFn3 createModifier_ "property" key' $ show value
 attribute :: forall msg. String -> String -> Modifier msg
 attribute key' value = runFn3 createModifier_ "attribute" key' value
 
+attributeBoolean :: forall msg. String -> Boolean -> Modifier msg
+attributeBoolean key' value = runFn3 createModifier_ "attribute" key' (show value)
+
 key :: forall msg. String -> Modifier msg
 key = runFn3 createModifier_ "key" ""
 

@@ -1,9 +1,10 @@
 module Snubbdom.Attribute where
 
 --import Prelude
-import Snubbdom.ModifierLibrary (attribute, Modifier)
+import Snubbdom.ModifierLibrary (attribute, attributeBoolean, Modifier)
 
 type Attribute = forall msg. String -> (Modifier msg)
+type AttributeBoolean = forall msg. Boolean -> (Modifier msg)
 
 accept :: Attribute
 accept = attribute "accept"
@@ -26,14 +27,14 @@ alt = attribute "alt"
 async :: Attribute
 async = attribute "async"
 
-autocomplete :: Attribute
-autocomplete = attribute "autocomplete"
+autocomplete :: AttributeBoolean
+autocomplete = attributeBoolean "autocomplete"
 
-autofocus :: Attribute
-autofocus = attribute "autofocus"
+autofocus :: AttributeBoolean
+autofocus = attributeBoolean "autofocus"
 
-autoplay :: Attribute
-autoplay = attribute "autoplay"
+autoplay :: AttributeBoolean
+autoplay = attributeBoolean "autoplay"
 
 bgcolor :: Attribute
 bgcolor = attribute "bgcolor"
@@ -44,8 +45,8 @@ border = attribute "border"
 charset :: Attribute
 charset = attribute "charset"
 
-checked :: Attribute
-checked = attribute "checked"
+checked :: AttributeBoolean
+checked = attributeBoolean "checked"
 
 cite' :: Attribute
 cite' = attribute "cite"
@@ -65,11 +66,11 @@ colspan = attribute "colspan"
 content :: Attribute
 content = attribute "content"
 
-contenteditable :: Attribute
-contenteditable = attribute "contenteditable"
+contenteditable :: AttributeBoolean
+contenteditable = attributeBoolean "contenteditable"
 
-controls :: Attribute
-controls = attribute "controls"
+controls :: AttributeBoolean
+controls = attributeBoolean "controls"
 
 coords :: Attribute
 coords = attribute "coords"
@@ -83,8 +84,8 @@ dataasterisk = attribute "data-*"
 datetime :: Attribute
 datetime = attribute "datetime"
 
-default :: Attribute
-default = attribute "default"
+default :: AttributeBoolean
+default = attributeBoolean "default"
 
 defer :: Attribute
 defer = attribute "defer"
@@ -95,8 +96,8 @@ dir = attribute "dir"
 dirname :: Attribute
 dirname = attribute "dirname"
 
-disabled :: Attribute
-disabled = attribute "disabled"
+disabled :: AttributeBoolean
+disabled = attributeBoolean "disabled"
 
 download :: Attribute
 download = attribute "download"
@@ -122,8 +123,8 @@ headers = attribute "headers"
 height :: Attribute
 height = attribute "height"
 
-hidden :: Attribute
-hidden = attribute "hidden"
+hidden :: AttributeBoolean
+hidden = attributeBoolean "hidden"
 
 high :: Attribute
 high = attribute "high"
@@ -140,8 +141,8 @@ httpequiv = attribute "http-equiv"
 id :: Attribute
 id = attribute "id"
 
-ismap :: Attribute
-ismap = attribute "ismap"
+ismap :: AttributeBoolean
+ismap = attributeBoolean "ismap"
 
 kind' :: Attribute
 kind' = attribute "kind"
@@ -155,8 +156,8 @@ lang = attribute "lang"
 list :: Attribute
 list = attribute "list"
 
-loop :: Attribute
-loop = attribute "loop"
+loop :: AttributeBoolean
+loop = attributeBoolean "loop"
 
 low :: Attribute
 low = attribute "low"
@@ -176,8 +177,8 @@ method = attribute "method"
 min :: Attribute
 min = attribute "min"
 
-multiple :: Attribute
-multiple = attribute "multiple"
+multiple :: AttributeBoolean
+multiple = attributeBoolean "multiple"
 
 muted :: Attribute
 muted = attribute "muted"
@@ -185,8 +186,8 @@ muted = attribute "muted"
 name :: Attribute
 name = attribute "name"
 
-novalidate :: Attribute
-novalidate = attribute "novalidate"
+novalidate :: AttributeBoolean
+novalidate = attributeBoolean "novalidate"
 
 onabort :: Attribute
 onabort = attribute "onabort"
@@ -416,17 +417,17 @@ poster = attribute "poster"
 preload :: Attribute
 preload = attribute "preload"
 
-readonly :: Attribute
-readonly = attribute "readonly"
+readonly :: AttributeBoolean
+readonly = attributeBoolean "readonly"
 
 rel :: Attribute
 rel = attribute "rel"
 
-required :: Attribute
-required = attribute "required"
+required :: AttributeBoolean
+required = attributeBoolean "required"
 
-reversed :: Attribute
-reversed = attribute "reversed"
+reversed :: AttributeBoolean
+reversed = attributeBoolean "reversed"
 
 rows :: Attribute
 rows = attribute "rows"
@@ -440,8 +441,8 @@ sandbox = attribute "sandbox"
 scope :: Attribute
 scope = attribute "scope"
 
-selected :: Attribute
-selected = attribute "selected"
+selected :: AttributeBoolean
+selected = attributeBoolean "selected"
 
 shape :: Attribute
 shape = attribute "shape"
@@ -455,8 +456,8 @@ sizes = attribute "sizes"
 span' :: Attribute
 span' = attribute "span"
 
-spellcheck :: Attribute
-spellcheck = attribute "spellcheck"
+spellcheck :: AttributeBoolean
+spellcheck = attributeBoolean "spellcheck"
 
 src :: Attribute
 src = attribute "src"
