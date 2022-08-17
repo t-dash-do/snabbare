@@ -10,7 +10,7 @@ A type-safe library wrapper for Snubbdom, a virtual DOM library.
 [Docs](https://pursuit.purescript.org/packages/purescript-snubbdom)
 
 
-The general use of this library: 
+### The general use of this library: 
 - build up an `Element` which constists of 
   * an HTML tag 
   * an array of 'modifiers' which consists of both HTML attributes and DOM properties
@@ -22,5 +22,7 @@ The general use of this library:
   * the output of elementToSnubbdomVNode
   * and the previous output of elementToSnubbdomVNode from a prior application state
 
-
+### Examples
+To see an example, run `make build-input-example` then `make run-input-example`, then go to `localhost:8080`
+Following the Dockerfile-example file, you can see how to go from `spago init` to using this library in a project
 

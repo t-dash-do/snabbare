@@ -41,7 +41,7 @@ ADD example-resources/package.json /example-project/
 ADD example-resources/packages.dhall /example-project/
 ADD example-resources/spago-project.dhall /example-project/spago.dhall
 ADD example-resources/examples/$EXAMPLE /example-project/src/Main.purs
-ADD example-resources/Framework.purs /example-project/src/
+ADD example-resources/SimpleFramework.purs /example-project/src/
 ADD . /example-project/snubbdom
 ADD example-resources/spago-library.dhall /example-project/snubbdom/spago.dhall
 
@@ -55,7 +55,7 @@ RUN browserify build/index.js -o build/bundle.js
 ENTRYPOINT http-server
 
 
-# docker build --build-arg EXAMPLE=Counter.purs -t test-example --file Dockerfile-example .
+# docker build --build-arg EXAMPLE=Input.purs -t test-example --file Dockerfile-example .
 # docker run -p 8080:8080 -it test-example /bin/bash
 # docker start -i -a test-example
 

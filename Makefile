@@ -33,3 +33,10 @@ dev:
 dev-snubbdom: 
 	make delete-snubbdom && make setup && make dev
 
+# EXAMPLES
+build-input-example:
+	docker build --build-arg EXAMPLE=Input.purs -t test-example --file Dockerfile-example .
+
+run-input-example:
+	docker run -p 8080:8080 -it test-example /bin/bash
+

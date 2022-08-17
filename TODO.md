@@ -10,4 +10,5 @@
 
 TODO:
 - add docs
-- add examples
+- add debug to library
+- debug the `Inputs.purs` issue (works in Hedwig)
