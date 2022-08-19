@@ -26,16 +26,10 @@ type Modifiers msg = Array (Modifier msg)
 
 -- not sure if I should (show value), need to dig in and decide how I want to structure this
 property :: forall msg a. (Show a) => String -> a -> Modifier msg
-property key' value = runFn3 createModifier_ "property" key' $ show value
+property = runFn3 createModifier_ "property" 
 
-attribute :: forall msg. String -> String -> Modifier msg
-attribute key' value = runFn3 createModifier_ "attribute" key' value
-
-attributeBoolean :: forall msg. String -> Boolean -> Modifier msg
-attributeBoolean key' value = runFn3 createModifier_ "attribute" key' (show value)
-
-attributeInt :: forall msg. String -> Int -> Modifier msg
-attributeInt key' value = runFn3 createModifier_ "attribute" key' (show value)
+attribute :: forall msg a. (Show a) => String -> a -> Modifier msg
+attribute = runFn3 createModifier_ "attribute" 
 
 key :: forall msg. String -> Modifier msg
 key = runFn3 createModifier_ "key" ""

@@ -1,508 +1,67 @@
 module Snubbdom.Attribute where
 
---import Prelude
-import Snubbdom.ModifierLibrary (attribute, attributeBoolean, attributeInt, Modifier)
+import Prelude
+import Snubbdom.ModifierLibrary (attribute, Modifier)
 
-type Attribute = forall msg. String -> Modifier msg
-type AttributeBoolean = forall msg. Boolean -> Modifier msg
+type AttributeString = forall msg. String -> Modifier msg
 type AttributeInt = forall msg. Int -> Modifier msg
 
-accept :: Attribute
-accept = attribute "accept"
-
-acceptcharset :: Attribute
-acceptcharset = attribute "accept-charset"
-
-accesskey :: Attribute
-accesskey = attribute "accesskey"
-
-action :: Attribute
-action = attribute "action"
-
-align :: Attribute
-align = attribute "align"
-
-alt :: Attribute
-alt = attribute "alt"
-
-async :: Attribute
-async = attribute "async"
-
-autocomplete :: AttributeBoolean
-autocomplete = attributeBoolean "autocomplete"
-
-autofocus :: AttributeBoolean
-autofocus = attributeBoolean "autofocus"
-
-autoplay :: AttributeBoolean
-autoplay = attributeBoolean "autoplay"
-
-bgcolor :: Attribute
-bgcolor = attribute "bgcolor"
-
-border :: Attribute
-border = attribute "border"
-
-charset :: Attribute
-charset = attribute "charset"
-
-checked :: AttributeBoolean
-checked = attributeBoolean "checked"
-
-cite' :: Attribute
-cite' = attribute "cite"
-
-class' :: Attribute
-class' = attribute "class"
-
-color :: Attribute
-color = attribute "color"
-
 cols :: AttributeInt
-cols = attributeInt "cols"
+cols = attribute "cols" <<< show
 
 colspan :: AttributeInt
-colspan = attributeInt "colspan"
-
-content :: Attribute
-content = attribute "content"
-
-contenteditable :: AttributeBoolean
-contenteditable = attributeBoolean "contenteditable"
-
-controls :: AttributeBoolean
-controls = attributeBoolean "controls"
-
-coords :: Attribute
-coords = attribute "coords"
-
-data' :: Attribute
-data' = attribute "data"
-
-dataasterisk :: Attribute
-dataasterisk = attribute "data-*"
-
-datetime :: Attribute
-datetime = attribute "datetime"
-
-default :: AttributeBoolean
-default = attributeBoolean "default"
-
-defer :: Attribute
-defer = attribute "defer"
-
-dir :: Attribute
-dir = attribute "dir"
-
-dirname :: Attribute
-dirname = attribute "dirname"
-
-disabled :: AttributeBoolean
-disabled = attributeBoolean "disabled"
-
-download :: Attribute
-download = attribute "download"
-
-draggable :: Attribute
-draggable = attribute "draggable"
-
-enctype :: Attribute
-enctype = attribute "enctype"
-
-for :: Attribute
-for = attribute "for"
-
-form' :: Attribute
-form' = attribute "form"
-
-formaction :: Attribute
-formaction = attribute "formaction"
-
-headers :: Attribute
-headers = attribute "headers"
+colspan = attribute "colspan" <<< show
 
 height :: AttributeInt
-height = attributeInt "height"
-
-hidden :: AttributeBoolean
-hidden = attributeBoolean "hidden"
-
-high :: Attribute
-high = attribute "high"
-
-href :: Attribute
-href = attribute "href"
-
-hreflang :: Attribute
-hreflang = attribute "hreflang"
-
-httpequiv :: Attribute
-httpequiv = attribute "http-equiv"
-
-id :: Attribute
-id = attribute "id"
-
-ismap :: AttributeBoolean
-ismap = attributeBoolean "ismap"
-
-kind' :: Attribute
-kind' = attribute "kind"
-
-label' :: Attribute
-label' = attribute "label"
-
-lang :: Attribute
-lang = attribute "lang"
-
-list :: Attribute
-list = attribute "list"
-
-loop :: AttributeBoolean
-loop = attributeBoolean "loop"
-
-low :: Attribute
-low = attribute "low"
-
-max :: Attribute
-max = attribute "max"
+height = attribute "height" <<< show
 
 maxlength :: AttributeInt
-maxlength = attributeInt "maxlength"
+maxlength = attribute "maxlength" <<< show
 
-media :: Attribute
-media = attribute "media"
-
-method :: Attribute
-method = attribute "method"
-
-min :: Attribute
-min = attribute "min"
-
-multiple :: AttributeBoolean
-multiple = attributeBoolean "multiple"
-
-muted :: Attribute
-muted = attribute "muted"
-
-name :: Attribute
-name = attribute "name"
-
-novalidate :: AttributeBoolean
-novalidate = attributeBoolean "novalidate"
-
-onabort :: Attribute
-onabort = attribute "onabort"
-
-onafterprint :: Attribute
-onafterprint = attribute "onafterprint"
-
-onbeforeprint :: Attribute
-onbeforeprint = attribute "onbeforeprint"
-
-onbeforeunload :: Attribute
-onbeforeunload = attribute "onbeforeunload"
-
-onblur :: Attribute
-onblur = attribute "onblur"
-
-oncanplay :: Attribute
-oncanplay = attribute "oncanplay"
-
-oncanplaythrough :: Attribute
-oncanplaythrough = attribute "oncanplaythrough"
-
-onchange :: Attribute
-onchange = attribute "onchange"
-
-onclick :: Attribute
-onclick = attribute "onclick"
-
-oncontextmenu :: Attribute
-oncontextmenu = attribute "oncontextmenu"
-
-oncopy :: Attribute
-oncopy = attribute "oncopy"
-
-oncuechange :: Attribute
-oncuechange = attribute "oncuechange"
-
-oncut :: Attribute
-oncut = attribute "oncut"
-
-ondblclick :: Attribute
-ondblclick = attribute "ondblclick"
-
-ondrag :: Attribute
-ondrag = attribute "ondrag"
-
-ondragend :: Attribute
-ondragend = attribute "ondragend"
-
-ondragenter :: Attribute
-ondragenter = attribute "ondragenter"
-
-ondragleave :: Attribute
-ondragleave = attribute "ondragleave"
-
-ondragover :: Attribute
-ondragover = attribute "ondragover"
-
-ondragstart :: Attribute
-ondragstart = attribute "ondragstart"
-
-ondrop :: Attribute
-ondrop = attribute "ondrop"
-
-ondurationchange :: Attribute
-ondurationchange = attribute "ondurationchange"
-
-onemptied :: Attribute
-onemptied = attribute "onemptied"
-
-onended :: Attribute
-onended = attribute "onended"
-
-onerror :: Attribute
-onerror = attribute "onerror"
-
-onfocus :: Attribute
-onfocus = attribute "onfocus"
-
-onhashchange :: Attribute
-onhashchange = attribute "onhashchange"
-
-oninput :: Attribute
-oninput = attribute "oninput"
-
-oninvalid :: Attribute
-oninvalid = attribute "oninvalid"
-
-onkeydown :: Attribute
-onkeydown = attribute "onkeydown"
-
-onkeypress :: Attribute
-onkeypress = attribute "onkeypress"
-
-onkeyup :: Attribute
-onkeyup = attribute "onkeyup"
-
-onload :: Attribute
-onload = attribute "onload"
-
-onloadeddata :: Attribute
-onloadeddata = attribute "onloadeddata"
-
-onloadedmetadata :: Attribute
-onloadedmetadata = attribute "onloadedmetadata"
-
-onloadstart :: Attribute
-onloadstart = attribute "onloadstart"
-
-onmousedown :: Attribute
-onmousedown = attribute "onmousedown"
-
-onmousemove :: Attribute
-onmousemove = attribute "onmousemove"
-
-onmouseout :: Attribute
-onmouseout = attribute "onmouseout"
-
-onmouseover :: Attribute
-onmouseover = attribute "onmouseover"
-
-onmouseup :: Attribute
-onmouseup = attribute "onmouseup"
-
-onmousewheel :: Attribute
-onmousewheel = attribute "onmousewheel"
-
-onoffline :: Attribute
-onoffline = attribute "onoffline"
-
-ononline :: Attribute
-ononline = attribute "ononline"
-
-onpagehide :: Attribute
-onpagehide = attribute "onpagehide"
-
-onpageshow :: Attribute
-onpageshow = attribute "onpageshow"
-
-onpaste :: Attribute
-onpaste = attribute "onpaste"
-
-onpause :: Attribute
-onpause = attribute "onpause"
-
-onplay :: Attribute
-onplay = attribute "onplay"
-
-onplaying :: Attribute
-onplaying = attribute "onplaying"
-
-onpopstate :: Attribute
-onpopstate = attribute "onpopstate"
-
-onprogress :: Attribute
-onprogress = attribute "onprogress"
-
-onratechange :: Attribute
-onratechange = attribute "onratechange"
-
-onreset :: Attribute
-onreset = attribute "onreset"
-
-onresize :: Attribute
-onresize = attribute "onresize"
-
-onscroll :: Attribute
-onscroll = attribute "onscroll"
-
-onsearch :: Attribute
-onsearch = attribute "onsearch"
-
-onseeked :: Attribute
-onseeked = attribute "onseeked"
-
-onseeking :: Attribute
-onseeking = attribute "onseeking"
-
-onselect :: Attribute
-onselect = attribute "onselect"
-
-onstalled :: Attribute
-onstalled = attribute "onstalled"
-
-onstorage :: Attribute
-onstorage = attribute "onstorage"
-
-onsubmit :: Attribute
-onsubmit = attribute "onsubmit"
-
-onsuspend :: Attribute
-onsuspend = attribute "onsuspend"
-
-ontimeupdate :: Attribute
-ontimeupdate = attribute "ontimeupdate"
-
-ontoggle :: Attribute
-ontoggle = attribute "ontoggle"
-
-onunload :: Attribute
-onunload = attribute "onunload"
-
-onvolumechange :: Attribute
-onvolumechange = attribute "onvolumechange"
-
-onwaiting :: Attribute
-onwaiting = attribute "onwaiting"
-
-onwheel :: Attribute
-onwheel = attribute "onwheel"
-
-open :: Attribute
-open = attribute "open"
-
-optimum :: Attribute
-optimum = attribute "optimum"
-
-pattern :: Attribute
-pattern = attribute "pattern"
-
-placeholder :: Attribute
-placeholder = attribute "placeholder"
-
-poster :: Attribute
-poster = attribute "poster"
-
-preload :: Attribute
-preload = attribute "preload"
-
-readonly :: AttributeBoolean
-readonly = attributeBoolean "readonly"
-
-rel :: Attribute
-rel = attribute "rel"
-
-required :: AttributeBoolean
-required = attributeBoolean "required"
-
-reversed :: AttributeBoolean
-reversed = attributeBoolean "reversed"
+minlength :: AttributeInt
+minlength = attribute "minlength" <<< show
 
 rows :: AttributeInt
-rows = attributeInt "rows"
+rows = attribute "rows" <<< show
 
 rowspan :: AttributeInt
-rowspan = attributeInt "rowspan"
-
-sandbox :: Attribute
-sandbox = attribute "sandbox"
-
-scope :: Attribute
-scope = attribute "scope"
-
-selected :: AttributeBoolean
-selected = attributeBoolean "selected"
-
-shape :: Attribute
-shape = attribute "shape"
+rowspan = attribute "rowspan" <<< show
 
 size :: AttributeInt
-size = attributeInt "size"
-
-sizes :: Attribute
-sizes = attribute "sizes"
-
-span' :: Attribute
-span' = attribute "span"
-
-spellcheck :: AttributeBoolean
-spellcheck = attributeBoolean "spellcheck"
-
-src :: Attribute
-src = attribute "src"
-
-srcdoc :: Attribute
-srcdoc = attribute "srcdoc"
-
-srclang :: Attribute
-srclang = attribute "srclang"
-
-srcset :: Attribute
-srcset = attribute "srcset"
+size = attribute "size" <<< show
 
 start :: AttributeInt
-start = attributeInt "start"
-
-step :: Attribute
-step = attribute "step"
+start = attribute "start" <<< show
 
 tabindex :: AttributeInt
-tabindex = attributeInt "tabindex"
-
-target :: Attribute
-target = attribute "target"
-
-title :: Attribute
-title = attribute "title"
-
-translate :: Attribute
-translate = attribute "translate"
-
-type' :: Attribute
-type' = attribute "type"
-
-usemap :: Attribute
-usemap = attribute "usemap"
-
-value :: Attribute
-value = attribute "value"
+tabindex = attribute "tabindex" <<< show
 
 width :: AttributeInt
-width = attributeInt "width"
+width = attribute "width" <<< show
 
-wrap :: Attribute
-wrap = attribute "wrap"
+contextmenu :: AttributeString
+contextmenu = attribute "contextmenu"
 
+datetime :: AttributeString
+datetime = attribute "datetime"
 
+draggable :: AttributeString
+draggable = attribute "draggable"
+
+itemprop :: AttributeString
+itemprop = attribute "itemprop"
+
+list :: AttributeString
+list = attribute "list"
+
+manifest :: AttributeString
+manifest = attribute "manifest"
+
+media :: AttributeString
+media = attribute "media"
+
+pubdate :: AttributeString
+pubdate = attribute "pubdate"
+
+rel :: AttributeString
+rel = attribute "rel"

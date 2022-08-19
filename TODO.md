@@ -12,3 +12,4 @@ TODO:
 - add docs
 - add debug to library
 - debug the `Inputs.purs` issue (works in Hedwig)
+- fix the className issue (adding more className just overrides it instead of concatting)
