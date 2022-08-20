@@ -1,5 +1,5 @@
-module Main where
---module Input where 
+--module Main where
+module Input where 
 
 import Prelude
 
@@ -19,7 +19,8 @@ import Snubbdom (
   value,
   onClick,
   onInput,
-  button
+  button,
+  className
   ) as S
 
 import Data.Tuple (Tuple(..))
@@ -46,12 +47,12 @@ view :: forall a. Model -> S.Element a Msg
 view model = S.main [S.id "main"] 
     if model.keep 
         then 
-        [ S.text (fromMaybe "name didnt stay" model.name)
-        , S.button [S.onClick Edit] [S.text "edit"]
+        [ S.text (fromMaybe "there was an error" model.name)
+        , S.button [S.onClick Edit, S.className "hey", S.className "you"] [S.text "edit"]
         ]
         else 
         [ S.input [S.type' "text", S.onInput (\s -> Update s), S.value $ fromMaybe "" model.name] []
-        , S.button [S.onClick Keep] [S.text $ "keep " <> fromMaybe "noName" model.name]
+        , S.button [S.onClick Keep] [S.text $ "keep " <> fromMaybe "" model.name]
         ]
     
 

@@ -15,7 +15,7 @@ exports.mapModifier_ = function(fn, modifier) {
         case "form":
           switch (key) {
             case "input":
-              return Object.assign({}, modifier, { value: function (event) { return fn(value(event)); } });
+              return Object.assign({}, modifier, { value: (event) => () => fn(value(event)()) } );
             default:
               return Object.assign({}, modifier, { value: fn(value) });
             };

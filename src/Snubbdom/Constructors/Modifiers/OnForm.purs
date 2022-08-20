@@ -15,18 +15,28 @@ import Web.HTML.HTMLTextAreaElement as HTMLTextAreaElement
 import Snubbdom.ModifierLibrary (onForm, Modifier)
 
 
-onSubmit :: forall msg. msg -> Modifier msg 
+onSubmit :: forall msg. msg -> Modifier msg
 onSubmit msg = onForm "submit" $ \event -> do
   Event.preventDefault event
-  pure msg 
+  pure msg
 
 onInput :: forall msg. (String -> msg) -> Modifier msg
 onInput f = onForm "input" $ \event -> do
-  value <- fromMaybe (pure "") $ tryBoth (Event.target event >>= Node.fromEventTarget)
+
+  value <- Event.target event 
+    >>= Node.fromEventTarget 
+    # \n -> getInputVal HTMLInputElement.fromNode HTMLInputElement.value n <|> getInputVal HTMLTextAreaElement.fromNode HTMLTextAreaElement.value n
+    # fromMaybe (pure "")
+
   pure $ f value
   where
-    getInputVal :: forall a. (Node -> Maybe a) -> (a -> Effect String) -> Maybe Node -> Maybe (Effect String)
-    getInputVal fromNode getVal node = node >>= fromNode <#> getVal
-    tryBoth :: Maybe Node -> Maybe (Effect String)
-    tryBoth n = getInputVal HTMLInputElement.fromNode HTMLInputElement.value n <|> getInputVal HTMLTextAreaElement.fromNode HTMLTextAreaElement.value n
-    
+    getInputVal :: forall a.
+      (Node -> Maybe a)
+      -> (a -> Effect String)
+      -> Maybe Node
+      -> Maybe (Effect String)
+    getInputVal fromNode getVal node =
+      node >>= fromNode <#> getVal
+
+
+
