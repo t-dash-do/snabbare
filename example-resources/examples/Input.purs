@@ -47,7 +47,7 @@ view :: forall a. Model -> S.Element a Msg
 view model = S.main [S.id "main"] 
     if model.keep 
         then 
-        [ S.text (fromMaybe "there was an error" model.name)
+        [ S.text (fromMaybe "you didn't type anything" model.name)
         , S.button [S.onClick Edit, S.className "hey", S.className "you"] [S.text "edit"]
         ]
         else 
