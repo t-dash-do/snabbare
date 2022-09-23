@@ -10,11 +10,10 @@
 
 *.swp
 index.js
-/.spago
-*/.spago
+.spago/
 /.parcel-cache
 build/*
 dist/*
-spago.dhall
 packages.dhall
 package-lock.json
+.vscode/

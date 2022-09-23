@@ -1,4 +1,4 @@
-exports.createModifier_ = function(type, key, value) {
+export const createModifier_ = function(type, key, value) {
     return { 
         type: type,
         key: key, 
@@ -6,7 +6,7 @@ exports.createModifier_ = function(type, key, value) {
     };
 };
 
-exports.mapModifier_ = function(fn, modifier) {
+export const mapModifier_ = function(fn, modifier) {
     const type  = modifier.type;
     const key   = modifier.key;
     const value = modifier.value;
@@ -27,15 +27,14 @@ exports.mapModifier_ = function(fn, modifier) {
     return modifier;
 };
 
-
 // UpdateAndView msg -> Array Modifier -> { attrs: , etc }
-exports.createSnubbdomModifiers_ = function(updateAndView, modifiers) {
+export const createSnubbdomModifiers_ = function(updateAndView, modifiers) {
     const snabbdomModifiers = modifiers.reduce(
         (acc, modifier) => createSnubbdomModifier(updateAndView, acc, modifier),
         {}
     );
     return snabbdomModifiers;
-}
+};
 
 const createSnubbdomModifier = function(updateAndView, acc, modifier) {
     const type  = modifier.type;

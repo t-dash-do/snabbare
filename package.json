@@ -6,6 +6,7 @@
   "author": "Zach Smith zach_asmith@yahoo.com https://aryzach.github.io",
   "license": "MIT",
   "dependencies": {
+    "purescript": "^0.14.9",
     "snabbdom": "^0.7.1"
   },
   "devDependencies": {

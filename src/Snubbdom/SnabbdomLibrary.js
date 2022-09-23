@@ -1,4 +1,4 @@
-const snabbdom = require('snabbdom');
+import * as snabbdom from 'snabbdom';
 const h = snabbdom.h;
 
 const patch = snabbdom.init([
@@ -8,20 +8,21 @@ const patch = snabbdom.init([
   require('snabbdom/modules/style').default,
 ]);
 
-exports.querySelector_ = document.querySelector.bind(document);
+export const querySelector_ = document.querySelector.bind(document);
 
-exports.h_ = function(name, data, children) {
+export const h_ = function(name, data, children) {
     const v = h(name, data, children);
     return v;
-}
+};
 
-exports.patch_ = function(oldVnode, newVnode) {
+export const patch_ = function(oldVnode, newVnode) {
     const p = patch(oldVnode, newVnode);
     return p;
-}
-exports.patchInit_ = exports.patch_;
+};
 
-exports.thunkJavascript_ = function(tag, key, thunk, args) {
+export const patchInit_ = patch_;
+
+export const thunkJavascript_ = function(tag, key, thunk, args) {
     return snabbdom.thunk(tag, key, uncurry(thunk), args);
 };
 
