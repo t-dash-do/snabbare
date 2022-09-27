@@ -16,7 +16,7 @@ colspan :: AttributeInt
 colspan = attribute "colspan" <<< show
 
 crossorigin :: AttributeString
-crossorigin = attribute "origin" <<< show
+crossorigin = attribute "crossorigin" <<< show
 
 frameborder :: AttributeInt
 frameborder = attribute "frameborder" <<< show
