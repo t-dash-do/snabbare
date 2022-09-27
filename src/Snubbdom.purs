@@ -91,8 +91,11 @@ import Snubbdom.Property (
   ) as Public
 
 import Snubbdom.Attribute (
+  allow,
   cols,
   colspan,
+  crossorigin,
+  frameborder,
   height,
   maxlength,
   minlength,

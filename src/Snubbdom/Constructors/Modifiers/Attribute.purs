@@ -6,11 +6,20 @@ import Snubbdom.ModifierLibrary (attribute, Modifier)
 type AttributeString = forall msg. String -> Modifier msg
 type AttributeInt = forall msg. Int -> Modifier msg
 
+allow :: AttributeString
+allow = attribute "allow" <<< show
+
 cols :: AttributeInt
 cols = attribute "cols" <<< show
 
 colspan :: AttributeInt
 colspan = attribute "colspan" <<< show
+
+crossorigin :: AttributeString
+crossorigin = attribute "origin" <<< show
+
+frameborder :: AttributeInt
+frameborder = attribute "frameborder" <<< show
 
 height :: AttributeInt
 height = attribute "height" <<< show
