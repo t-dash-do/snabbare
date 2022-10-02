@@ -30,26 +30,3 @@ instance functorElement :: Functor (Element a) where
            fn: \a -> map f (fn a),
            arg: arg
            }
-
--- never create this manually. Use elementToVNode instead
-data VNode = 
-    VNode { tag :: String, modifiers :: SnubbdomModifiers, children :: VNodeChildren } 
-    | VNodeString String
-    | VNodeQueue { tag :: String, key :: String, args :: ThunkArgs }
-
-type VNodeChildren = Array VNode
-
-elementToVNode :: forall a msg. UpdateAndView msg -> (Element a msg) -> VNode 
-elementToVNode updateAndView (Element { tag, modifiers, children }) = 
-    VNode { 
-          tag: tag, 
-          modifiers: (createSnubbdomModifiers updateAndView modifiers), 
-          children: (map (elementToVNode updateAndView) children) 
-          }
-elementToVNode _ (ElementString s) = VNodeString s 
-elementToVNode updateAndView (ElementQueue { tag, key, fn, arg }) = 
-    VNodeQueue { 
-          tag: tag, 
-          key: key,
-          args: createThunkArgs fn arg updateAndView
-          }
