@@ -9,6 +9,7 @@ import Snubbdom.SnabbdomLibrary (
 
 import Snubbdom.ModifierLibrary (
   Modifier,
+  Modifiers,
   key,
   attribute,
   property,
@@ -24,7 +25,8 @@ import Snubbdom.ElementConstructors (
   ) as Public
 
 import Snubbdom.Element (
-  Element
+  Element,
+  ElementChildren
   ) as Public
 
 import Snubbdom.Property (

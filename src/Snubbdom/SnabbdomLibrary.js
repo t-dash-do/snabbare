@@ -32,3 +32,4 @@ const uncurry = function(fn) {
   }
 }
 
+// export const JsElementDecorator = x => x.toVnode();

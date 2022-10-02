@@ -10,9 +10,9 @@ import Unsafe.Coerce (unsafeCoerce)
 import Web.DOM as Web
 
 import Snubbdom.ModifierLibrary (SnubbdomModifiers, UpdateAndView, createSnubbdomModifiers)
-import Snubbdom.Element (Element(..), ThunkArgs, createThunkArgs)
+import Snubbdom.Element (Element(..), ThunkArgs, createThunkArgs, JsElementDecorator, SnabbdomVNode)
 
-foreign import data SnabbdomVNode :: Type
+
 type ThunkPurescript a msg = forall a msg. (a -> Element a msg) -> a -> UpdateAndView msg -> SnabbdomVNode
 
 -- FFI
@@ -22,6 +22,18 @@ foreign import h_ :: Fn3 String SnubbdomModifiers (Array SnabbdomVNode) Snabbdom
 foreign import querySelector_ :: EffectFn1 String (Nullable.Nullable Web.Element)
 foreign import thunkJavascript_ :: forall a msg. Fn4 String String (ThunkPurescript a msg) ThunkArgs SnabbdomVNode
 
+{-
+foreign import JsElementDecoratorToVNode :: JsElementDecorator -> SnabbdomVNode
+type JsElementDecorator
+    :: ∀ a msg.
+        { element ::
+            { tag :: String
+            , modifiers :: Modifiers msg
+            , children :: (ElementChildren a msg)
+            } 
+        }
+    -> 
+-}
 
 h :: String -> SnubbdomModifiers -> (Array SnabbdomVNode) -> SnabbdomVNode
 h = runFn3 h_
@@ -45,7 +57,7 @@ querySelector s = do
   pure $ Nullable.toMaybe q
 
 
-elementToSnabbdomVNode :: forall a msg. UpdateAndView msg -> (Element a msg) -> SnabbdomVNode
+elementToSnabbdomVNode :: forall a msg. UpdateAndView msg -> Element a msg -> SnabbdomVNode
 elementToSnabbdomVNode updateAndView (Element { tag, modifiers, children }) = 
     h
         tag
@@ -58,3 +70,7 @@ elementToSnabbdomVNode updateAndView (ElementQueue { tag, key, fn, arg }) =
         key
         thunkPurescript
         (createThunkArgs fn arg updateAndView)
+elementToSnabbdomVNode updateAndView (JsDecoratedElement {element, decorator}) =
+    decorator
+        $ elementToSnabbdomVNode updateAndView
+        $ Element element

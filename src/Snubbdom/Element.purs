@@ -6,14 +6,22 @@ import Snubbdom.ModifierLibrary (Modifiers, SnubbdomModifiers, UpdateAndView, cr
 
 foreign import data ThunkArgs :: Type 
 
+foreign import data SnabbdomVNode :: Type
+
 foreign import createThunkArgs_ :: forall a msg. Fn3 (a -> Element a msg) a (UpdateAndView msg) ThunkArgs 
 createThunkArgs :: forall a msg. (a -> Element a msg) -> a -> UpdateAndView msg -> ThunkArgs 
 createThunkArgs = runFn3 createThunkArgs_
 
-data Element a msg = 
-    Element { tag :: String, modifiers :: Modifiers msg, children :: (ElementChildren a msg) } 
+type JsElementDecorator = SnabbdomVNode -> SnabbdomVNode 
+
+data Element a msg
+    = Element { tag :: String, modifiers :: Modifiers msg, children :: (ElementChildren a msg) } 
     | ElementString String
     | ElementQueue { tag :: String, key :: String, fn :: (a -> Element a msg), arg :: a }
+    | JsDecoratedElement 
+        { element ::  {tag :: String, modifiers :: Modifiers msg, children :: (ElementChildren a msg) } 
+        , decorator :: JsElementDecorator
+        }
 
 type ElementChildren a msg = Array (Element a msg)
 
@@ -30,3 +38,10 @@ instance functorElement :: Functor (Element a) where
            fn: \a -> map f (fn a),
            arg: arg
            }
+    map f (JsDecoratedElement {decorator, element:{tag, modifiers, children}}) =
+        let element' =
+                    { tag: tag 
+                    , modifiers: map (map f) modifiers 
+                    , children: map (map f) children
+                    }
+        in (JsDecoratedElement {decorator, element:element'})
