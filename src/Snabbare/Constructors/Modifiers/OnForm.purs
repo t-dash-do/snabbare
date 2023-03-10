@@ -1,4 +1,4 @@
-module Snubbdom.OnForm where
+module Snabbare.OnForm where
 
 import Prelude
 import Web.Event.Event as Event
@@ -12,7 +12,7 @@ import Web.Event.Event as Event
 import Web.HTML.HTMLInputElement as HTMLInputElement
 import Web.HTML.HTMLTextAreaElement as HTMLTextAreaElement
 
-import Snubbdom.ModifierLibrary (onForm, Modifier)
+import Snabbare.ModifierLibrary (onForm, Modifier)
 
 
 onSubmit :: forall msg. msg -> Modifier msg

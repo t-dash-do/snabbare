@@ -22,7 +22,7 @@ to generate this file without the comments in this block.
   , "maybe"
   , "prelude"
   , "random"
-  , "snubbdom"
+  , "snabbare"
   , "tuples"
   , "unfoldable"
   , "web-dom"

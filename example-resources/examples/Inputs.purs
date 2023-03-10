@@ -8,7 +8,7 @@ import Data.Array as Array
 import Data.Maybe as Maybe
 import Effect (Effect)
 
-import Snubbdom (
+import Snabbare (
   Element,
   div,
   main,

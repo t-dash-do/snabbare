@@ -1,9 +1,9 @@
 {
-  "name": "snubbdom",
+  "name": "snabbare",
   "version": "1.0.0",
-  "description": "A Purescript wrapper the Snubbdom virtual DOM library",
+  "description": "A Purescript wrapper the Snabbdom virtual DOM library with an Elm-like API",
   "main": "index.js",
-  "author": "Zach Smith zach_asmith@yahoo.com https://aryzach.github.io",
+  "author": "T-Do, Inc.",
   "license": "MIT",
   "dependencies": {
     "purescript": "^0.14.9",

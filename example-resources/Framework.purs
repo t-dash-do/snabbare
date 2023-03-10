@@ -14,8 +14,8 @@ import Effect.Ref as Ref
 import Unsafe.Coerce (unsafeCoerce)
 import Web.DOM as Web
 
-import Snubbdom.Library as Snubb
-import Snubbdom.Element as Snubb
+import Snabbare.Library as Snubb
+import Snabbare.Element as Snubb
 
 type Init model msg = Tuple model (Array (Aff msg))
 
@@ -46,7 +46,7 @@ mount' querySelectorElement app = do
       let Tuple model' affs = app.init
       Ref.write model' model
       let initElement = app.view model'
-      let newSvnode = Snubb.elementToSnubbdomVNode updateAndView initElement
+      let newSvnode = Snubb.elementToSnabbareVNode updateAndView initElement
       newPatchVnode <- Snubb.patchInit querySelectorElement newSvnode
       Ref.write newPatchVnode svnode
       dispatch affs
@@ -59,7 +59,7 @@ mount' querySelectorElement app = do
     render = do
       oldSvnode <- Ref.read svnode
       newElement <- app.view <$> Ref.read model
-      let newSvnode = Snubb.elementToSnubbdomVNode updateAndView newElement
+      let newSvnode = Snubb.elementToSnabbareVNode updateAndView newElement
       newSvnodeFromPatch <- Snubb.patch oldSvnode newSvnode 
       Ref.write newSvnodeFromPatch svnode
     dispatch affs = do

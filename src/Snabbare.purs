@@ -1,13 +1,13 @@
-module Snubbdom (module Public) where
+module Snabbare (module Public) where
 
-import Snubbdom.SnabbdomLibrary ( 
+import Snabbare.SnabbdomLibrary ( 
   patchInit,
   patch,
   elementToSnabbdomVNode,
   querySelector 
   ) as Public
 
-import Snubbdom.ModifierLibrary (
+import Snabbare.ModifierLibrary (
   Modifier,
   Modifiers,
   key,
@@ -18,18 +18,18 @@ import Snubbdom.ModifierLibrary (
   onMouse
   ) as Public
 
-import Snubbdom.ElementConstructors (
+import Snabbare.ElementConstructors (
   elementConstructor,
   text,
   queueElement
   ) as Public
 
-import Snubbdom.Element (
+import Snabbare.Element (
   Element,
   ElementChildren
   ) as Public
 
-import Snubbdom.Property (
+import Snabbare.Property (
   autocomplete,
   autofocus,
   autoplay,
@@ -92,7 +92,7 @@ import Snubbdom.Property (
   wrap 
   ) as Public
 
-import Snubbdom.Attribute (
+import Snabbare.Attribute (
   allow,
   cols,
   colspan,
@@ -118,7 +118,7 @@ import Snubbdom.Attribute (
   rel 
   ) as Public
 
-import Snubbdom.OnMouse (
+import Snabbare.OnMouse (
   onClick,
   onDoubleClick,
   onMouseDown,
@@ -130,12 +130,12 @@ import Snubbdom.OnMouse (
   onMouseOut
   ) as Public
 
-import Snubbdom.OnForm (
+import Snabbare.OnForm (
   onSubmit,
   onInput
   ) as Public
 
-import Snubbdom.Tag (
+import Snabbare.Tag (
   a,
   abbr,
   address,

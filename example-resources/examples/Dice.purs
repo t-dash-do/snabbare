@@ -10,7 +10,7 @@ import Effect.Random as Random
 import Data.Tuple (Tuple(..))
 import Data.Maybe (Maybe(..))
 
-import Snubbdom (
+import Snabbare (
   Element,
   div,
   main,

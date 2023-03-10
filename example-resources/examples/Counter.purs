@@ -8,7 +8,7 @@ import Data.Tuple (Tuple(..))
 
 import Framework as F
 
-import Snubbdom (
+import Snabbare (
   Element,
   div,
   main,

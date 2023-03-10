@@ -1,8 +1,8 @@
-module Snubbdom.Property where
+module Snabbare.Property where
 
 import Prelude (($))
 import Data.String as String
-import Snubbdom.ModifierLibrary (property, Modifier)
+import Snabbare.ModifierLibrary (property, Modifier)
 
 type StringProperty = forall msg. String -> Modifier msg
 type BooleanProperty = forall msg. Boolean -> Modifier msg

@@ -8,7 +8,7 @@ import Data.Maybe (Maybe(..), fromMaybe)
 
 import SimpleFramework as F
 
-import Snubbdom (
+import Snabbare (
   Element,
   main,
   div,

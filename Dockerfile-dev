@@ -47,8 +47,8 @@ RUN /home/aryzach/dotfiles/setup.sh
 WORKDIR /home/aryzach/
 CMD /bin/bash -i "/home/aryzach/.bashrc"
 
-# docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg UNAME=$(whoami) -t snubbdom .
-# docker run --net=host -itv `pwd`:/home/aryzach/snubbdom snubbdom /bin/bash
-# docker start -i -a snubbdom
+# docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg UNAME=$(whoami) -t snabbare .
+# docker run --net=host -itv `pwd`:/home/aryzach/snabbare snabbare /bin/bash
+# docker start -i -a snabbare
 
 

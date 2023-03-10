@@ -4,8 +4,8 @@ setup:
 clean: 
 	rm -rf bower_components & rm -rf node_modules & rm -rf output & rm -rf build/* & rm -rf dist/* & rm -f package-lock.json
 
-delete-snubbdom: 
-	rm -rf output/snubbdom* && rm -rf .spago/snubbdom
+delete-snabbare: 
+	rm -rf output/snabbare* && rm -rf .spago/snabbare
 
 delete-build: 
 	rm -rf build/*
@@ -30,8 +30,8 @@ serve:
 dev: 
 	spago bundle-app --watch --clear-screen --no-install --main Main --to build/index.js --then 'make browserify && make parcel'
 
-dev-snubbdom: 
-	make delete-snubbdom && make setup && make dev
+dev-snabbare: 
+	make delete-snabbare && make setup && make dev
 
 # EXAMPLES
 build-input-example:

@@ -1,4 +1,4 @@
-module Snubbdom.ModifierLibrary where
+module Snabbare.ModifierLibrary where
 
 import Prelude 
 import Effect (Effect)
@@ -11,12 +11,12 @@ type UpdateAndView msg = msg -> Effect Unit
 foreign import mapModifier_ :: forall a b. Fn2 (a -> b) (Modifier a) (Modifier b)
 foreign import createModifier_ :: forall msg a. Fn3 String String a (Modifier msg)
 
-foreign import createSnubbdomModifiers_ :: forall msg. Fn2 (UpdateAndView msg) (Modifiers msg) SnubbdomModifiers
-createSnubbdomModifiers :: forall msg. UpdateAndView msg -> (Modifiers msg) -> SnubbdomModifiers
-createSnubbdomModifiers = runFn2 createSnubbdomModifiers_ 
+foreign import createSnabbareModifiers_ :: forall msg. Fn2 (UpdateAndView msg) (Modifiers msg) SnabbareModifiers
+createSnabbareModifiers :: forall msg. UpdateAndView msg -> (Modifiers msg) -> SnabbareModifiers
+createSnabbareModifiers = runFn2 createSnabbareModifiers_ 
 
-foreign import data SnubbdomModifier :: Type
-type SnubbdomModifiers = Array SnubbdomModifier 
+foreign import data SnabbareModifier :: Type
+type SnabbareModifiers = Array SnabbareModifier 
 
 foreign import data Modifier :: Type -> Type
 instance functorModifier :: Functor Modifier where

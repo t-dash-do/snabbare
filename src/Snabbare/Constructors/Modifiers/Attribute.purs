@@ -1,7 +1,7 @@
-module Snubbdom.Attribute where
+module Snabbare.Attribute where
 
 import Prelude
-import Snubbdom.ModifierLibrary (attribute, Modifier)
+import Snabbare.ModifierLibrary (attribute, Modifier)
 
 type AttributeString = forall msg. String -> Modifier msg
 type AttributeInt = forall msg. Int -> Modifier msg

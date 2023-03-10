@@ -19,7 +19,7 @@ import Web.Event.Event as Event
 import Data.Tuple (Tuple(..))
 import Effect.Class (liftEffect)
 
-import Snubbdom as H
+import Snabbare as H
 
 infixr 6 Tuple as :>
 

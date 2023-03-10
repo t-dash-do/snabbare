@@ -10,7 +10,7 @@ import Data.Maybe as Maybe
 import Effect (Effect)
 import Counter as Counter
 
-import Snubbdom (
+import Snabbare (
   Element,
   div,
   main,

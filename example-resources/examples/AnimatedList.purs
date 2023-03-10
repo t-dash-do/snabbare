@@ -11,7 +11,7 @@ import Effect (Effect)
 import Effect.Random as Random
 import Effect.Class (liftEffect)
 
-import Snubbdom as H
+import Snabbare as H
 
 infixr 6 Tuple as :>
 

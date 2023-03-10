@@ -13,8 +13,8 @@ import Effect.Ref as Ref
 import Unsafe.Coerce (unsafeCoerce)
 import Web.DOM as Web
 
-import Snubbdom.Library as Snubb
-import Snubbdom.Element as Snubb
+import Snabbare.Library as Snubb
+import Snabbare.Element as Snubb
 
 type Init model = model 
 

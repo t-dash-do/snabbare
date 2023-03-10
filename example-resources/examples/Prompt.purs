@@ -11,7 +11,7 @@ import Web.HTML.Window as Window
 import Effect.Class (liftEffect)
 import Data.Tuple (Tuple(..))
 
-import Snubbdom (
+import Snabbare (
   Element,
   Update,
   View,

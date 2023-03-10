@@ -42,8 +42,8 @@ ADD example-resources/packages.dhall /example-project/
 ADD example-resources/spago-project.dhall /example-project/spago.dhall
 ADD example-resources/examples/$EXAMPLE /example-project/src/Main.purs
 ADD example-resources/SimpleFramework.purs /example-project/src/
-ADD . /example-project/snubbdom
-ADD example-resources/spago-library.dhall /example-project/snubbdom/spago.dhall
+ADD . /example-project/snabbare
+ADD example-resources/spago-library.dhall /example-project/snabbare/spago.dhall
 
 # build the example project
 RUN npm install 

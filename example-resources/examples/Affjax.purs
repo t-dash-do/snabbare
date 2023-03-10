@@ -10,7 +10,7 @@ import Data.Tuple (Tuple(..))
 
 import Framework as F
 
-import Snubbdom as H
+import Snabbare as H
 
 infixr 6 Tuple as :>
 

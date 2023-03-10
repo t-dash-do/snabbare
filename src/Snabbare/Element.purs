@@ -1,8 +1,8 @@
-module Snubbdom.Element where
+module Snabbare.Element where
 
 import Prelude (class Functor, map)
 import Data.Function.Uncurried (Fn3, runFn3)
-import Snubbdom.ModifierLibrary (Modifiers, SnubbdomModifiers, UpdateAndView, createSnubbdomModifiers)
+import Snabbare.ModifierLibrary (Modifiers, SnabbareModifiers, UpdateAndView, createSnabbareModifiers)
 
 foreign import data ThunkArgs :: Type 
 

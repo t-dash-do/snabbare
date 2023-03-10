@@ -1,4 +1,4 @@
-module Snubbdom.SnabbdomLibrary where
+module Snabbare.SnabbdomLibrary where
 
 import Prelude (bind, map, pure, ($))
 import Data.Function.Uncurried (Fn3, Fn4, runFn3, runFn4)
@@ -9,8 +9,8 @@ import Effect.Uncurried (EffectFn1, EffectFn2, runEffectFn1, runEffectFn2)
 import Unsafe.Coerce (unsafeCoerce)
 import Web.DOM as Web
 
-import Snubbdom.ModifierLibrary (SnubbdomModifiers, UpdateAndView, createSnubbdomModifiers)
-import Snubbdom.Element (Element(..), ThunkArgs, createThunkArgs, JsElementDecorator, SnabbdomVNode)
+import Snabbare.ModifierLibrary (SnabbareModifiers, UpdateAndView, createSnabbareModifiers)
+import Snabbare.Element (Element(..), ThunkArgs, createThunkArgs, JsElementDecorator, SnabbdomVNode)
 
 
 type ThunkPurescript a msg = forall a msg. (a -> Element a msg) -> a -> UpdateAndView msg -> SnabbdomVNode
@@ -18,7 +18,7 @@ type ThunkPurescript a msg = forall a msg. (a -> Element a msg) -> a -> UpdateAn
 -- FFI
 foreign import patch_ :: EffectFn2 SnabbdomVNode SnabbdomVNode SnabbdomVNode
 foreign import patchInit_ :: EffectFn2 Web.Element SnabbdomVNode SnabbdomVNode
-foreign import h_ :: Fn3 String SnubbdomModifiers (Array SnabbdomVNode) SnabbdomVNode
+foreign import h_ :: Fn3 String SnabbareModifiers (Array SnabbdomVNode) SnabbdomVNode
 foreign import querySelector_ :: EffectFn1 String (Nullable.Nullable Web.Element)
 foreign import thunkJavascript_ :: forall a msg. Fn4 String String (ThunkPurescript a msg) ThunkArgs SnabbdomVNode
 
@@ -35,7 +35,7 @@ type JsElementDecorator
     -> 
 -}
 
-h :: String -> SnubbdomModifiers -> (Array SnabbdomVNode) -> SnabbdomVNode
+h :: String -> SnabbareModifiers -> (Array SnabbdomVNode) -> SnabbdomVNode
 h = runFn3 h_
 
 thunkJavascript :: forall a msg. String -> String -> (ThunkPurescript a msg) -> ThunkArgs -> SnabbdomVNode
@@ -61,7 +61,7 @@ elementToSnabbdomVNode :: forall a msg. UpdateAndView msg -> Element a msg -> Sn
 elementToSnabbdomVNode updateAndView (Element { tag, modifiers, children }) = 
     h
         tag
-        (createSnubbdomModifiers updateAndView modifiers)
+        (createSnabbareModifiers updateAndView modifiers)
         (map (elementToSnabbdomVNode updateAndView) children) 
 elementToSnabbdomVNode _ (ElementString s) = unsafeCoerce s 
 elementToSnabbdomVNode updateAndView (ElementQueue { tag, key, fn, arg }) = 

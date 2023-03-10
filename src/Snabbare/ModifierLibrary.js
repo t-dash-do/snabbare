@@ -28,15 +28,15 @@ export const mapModifier_ = function(fn, modifier) {
 };
 
 // UpdateAndView msg -> Array Modifier -> { attrs: , etc }
-export const createSnubbdomModifiers_ = function(updateAndView, modifiers) {
+export const createSnabbareModifiers_ = function(updateAndView, modifiers) {
     const snabbdomModifiers = modifiers.reduce(
-        (acc, modifier) => createSnubbdomModifier(updateAndView, acc, modifier),
+        (acc, modifier) => createSnabbareModifier(updateAndView, acc, modifier),
         {}
     );
     return snabbdomModifiers;
 };
 
-const createSnubbdomModifier = function(updateAndView, acc, modifier) {
+const createSnabbareModifier = function(updateAndView, acc, modifier) {
     const type  = modifier.type;
     const key   = modifier.key;
     const value = modifier.value;
@@ -85,4 +85,3 @@ const callForm = function(send, fn, event) {
 const callMouse = function(send, msg, notUsed) {
   send(msg)();
 };
-
