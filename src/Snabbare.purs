@@ -3,7 +3,7 @@ module Snabbare (module Public) where
 import Snabbare.SnabbdomLibrary ( 
   patchInit,
   patch,
-  elementToSnabbdomVNode,
+  elementToVNode,
   querySelector 
   ) as Public
 

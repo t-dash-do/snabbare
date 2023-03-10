@@ -49,7 +49,7 @@ patch = runEffectFn2 patch_
 
 
 thunkPurescript :: forall a msg. ThunkPurescript a msg
-thunkPurescript fn arg updateAndView = elementToSnabbdomVNode updateAndView $ fn arg
+thunkPurescript fn arg updateAndView = elementToVNode updateAndView $ fn arg
 
 querySelector :: String -> Effect (Maybe Web.Element)
 querySelector s = do
@@ -57,20 +57,20 @@ querySelector s = do
   pure $ Nullable.toMaybe q
 
 
-elementToSnabbdomVNode :: forall a msg. UpdateAndView msg -> Element a msg -> SnabbdomVNode
-elementToSnabbdomVNode updateAndView (Element { tag, modifiers, children }) = 
+elementToVNode :: forall a msg. UpdateAndView msg -> Element a msg -> SnabbdomVNode
+elementToVNode updateAndView (Element { tag, modifiers, children }) = 
     h
         tag
         (createSnabbareModifiers updateAndView modifiers)
-        (map (elementToSnabbdomVNode updateAndView) children) 
-elementToSnabbdomVNode _ (ElementString s) = unsafeCoerce s 
-elementToSnabbdomVNode updateAndView (ElementQueue { tag, key, fn, arg }) = 
+        (map (elementToVNode updateAndView) children) 
+elementToVNode _ (ElementString s) = unsafeCoerce s 
+elementToVNode updateAndView (ElementQueue { tag, key, fn, arg }) = 
     thunkJavascript 
         tag
         key
         thunkPurescript
         (createThunkArgs fn arg updateAndView)
-elementToSnabbdomVNode updateAndView (JsDecoratedElement {element, decorator}) =
+elementToVNode updateAndView (JsDecoratedElement {element, decorator}) =
     decorator
-        $ elementToSnabbdomVNode updateAndView
+        $ elementToVNode updateAndView
         $ Element element

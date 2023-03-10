@@ -15,12 +15,12 @@ A PureScript virtual DOM library with an Elm-like interface based on Snabbdom.
   * an HTML tag 
   * an array of 'modifiers' which consists of both HTML attributes and DOM properties
   * and an array of child Elements
-- call elementToSnabbareVNode with
+- call elementToVNode with
   * the Element created above
   * function that takes any message (generally a custom sum type) and updates application state and renders that updated state
 - call patch with
-  * the output of elementToSnabbareVNode
-  * and the previous output of elementToSnabbareVNode from a prior application state
+  * the output of elementToVNode
+  * and the previous output of elementToVNode from a prior application state
 
 ### Examples
 To see an example, run `make build-input-example` then `make run-input-example`, then go to `localhost:8080`

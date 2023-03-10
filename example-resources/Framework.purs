@@ -14,14 +14,14 @@ import Effect.Ref as Ref
 import Unsafe.Coerce (unsafeCoerce)
 import Web.DOM as Web
 
-import Snabbare.Library as Snubb
-import Snabbare.Element as Snubb
+import Snabbare.Library as Snabb
+import Snabbare.Element as Snabb
 
 type Init model msg = Tuple model (Array (Aff msg))
 
 type Update model msg = model -> msg -> Tuple model (Array (Aff msg))
 
-type View model a msg = model -> Snubb.Element a msg 
+type View model a msg = model -> Snabb.Element a msg 
 
 type Application model a msg = { 
   init :: Init model msg,
@@ -31,7 +31,7 @@ type Application model a msg = {
 
 mount :: forall model a msg. String -> Application model a msg -> Effect Unit
 mount selector app = do
-  maybeElement <- Snubb.querySelector selector
+  maybeElement <- Snabb.querySelector selector
   case maybeElement of
     Just element -> mount' element app 
     Nothing -> log $ "No element matching selector " <> show selector <> " found!"
@@ -46,8 +46,8 @@ mount' querySelectorElement app = do
       let Tuple model' affs = app.init
       Ref.write model' model
       let initElement = app.view model'
-      let newSvnode = Snubb.elementToSnabbareVNode updateAndView initElement
-      newPatchVnode <- Snubb.patchInit querySelectorElement newSvnode
+      let newSvnode = Snabb.elementToVNode updateAndView initElement
+      newPatchVnode <- Snabb.patchInit querySelectorElement newSvnode
       Ref.write newPatchVnode svnode
       dispatch affs
     updateAndView msg = do
@@ -59,8 +59,8 @@ mount' querySelectorElement app = do
     render = do
       oldSvnode <- Ref.read svnode
       newElement <- app.view <$> Ref.read model
-      let newSvnode = Snubb.elementToSnabbareVNode updateAndView newElement
-      newSvnodeFromPatch <- Snubb.patch oldSvnode newSvnode 
+      let newSvnode = Snabb.elementToVNode updateAndView newElement
+      newSvnodeFromPatch <- Snabb.patch oldSvnode newSvnode 
       Ref.write newSvnodeFromPatch svnode
     dispatch affs = do
       for_ affs $ \aff -> do

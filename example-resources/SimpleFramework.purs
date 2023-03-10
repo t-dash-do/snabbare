@@ -13,14 +13,14 @@ import Effect.Ref as Ref
 import Unsafe.Coerce (unsafeCoerce)
 import Web.DOM as Web
 
-import Snabbare.Library as Snubb
-import Snabbare.Element as Snubb
+import Snabbare.Library as Snabb
+import Snabbare.Element as Snabb
 
 type Init model = model 
 
 type Update model msg = model -> msg -> model 
 
-type View model a msg = model -> Snubb.Element a msg 
+type View model a msg = model -> Snabb.Element a msg 
 
 type Application model a msg = { 
   init :: Init model,
@@ -30,7 +30,7 @@ type Application model a msg = {
 
 mount :: forall model a msg. String -> Application model a msg -> Effect Unit
 mount selector app = do
-  maybeElement <- Snubb.querySelector selector
+  maybeElement <- Snabb.querySelector selector
   case maybeElement of
     Just element -> mount' element app 
     Nothing -> log $ "No element matching selector " <> show selector <> " found!"
@@ -49,7 +49,7 @@ mount' initialDomElement app = do
       let model' = app.init
       writeModel model' 
       let initElement = app.view model'
-      newVnode <- Snubb.patchInit initialDomElement (Snubb.elementToSnabbdomVNode updateAndView initElement)
+      newVnode <- Snabb.patchInit initialDomElement (Snabb.elementToVNode updateAndView initElement)
       writeVnode newVnode 
 
     updateAndView msg = do
@@ -61,7 +61,7 @@ mount' initialDomElement app = do
     render = do
       oldVnode <- readVnode
       newElement <- app.view <$> readModel
-      newVnodeFromPatch <- Snubb.patch oldVnode (Snubb.elementToSnabbdomVNode updateAndView newElement)
+      newVnodeFromPatch <- Snabb.patch oldVnode (Snabb.elementToVNode updateAndView newElement)
       writeVnode newVnodeFromPatch 
 
   start
