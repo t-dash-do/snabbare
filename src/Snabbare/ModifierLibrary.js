@@ -29,11 +29,11 @@ export const mapModifier_ = function(fn, modifier) {
 
 // UpdateAndView msg -> Array Modifier -> { attrs: , etc }
 export const createSnabbareModifiers_ = function(updateAndView, modifiers) {
-    const snabbdomModifiers = modifiers.reduce(
+    const snabbareModifiers = modifiers.reduce(
         (acc, modifier) => createSnabbareModifier(updateAndView, acc, modifier),
         {}
     );
-    return snabbdomModifiers;
+    return snabbareModifiers;
 };
 
 const createSnabbareModifier = function(updateAndView, acc, modifier) {

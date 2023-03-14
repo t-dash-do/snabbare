@@ -6,7 +6,7 @@
     "index.js"
   ],
   "dependencies": {
-    "snabbdom": "^0.7.1",
-    "snabbdom-transition": "^0.2.0"
+    "snabbare": "^0.7.1",
+    "snabbare-transition": "^0.2.0"
   }
 }

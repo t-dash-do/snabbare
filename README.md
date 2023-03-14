@@ -1,11 +1,11 @@
 # Snabbare 
 
-![GitHub](https://img.shields.io/github/license/aryzach/purescript-snabbdom)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/aryzach/purescript-snabbdom)
-[![Pursuit](https://pursuit.purescript.org/packages/purescript-snabbdom/badge)](https://pursuit.purescript.org/packages/purescript-snabbdom)
+![GitHub](https://img.shields.io/github/license/aryzach/purescript-snabbare)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/aryzach/purescript-snabbare)
+[![Pursuit](https://pursuit.purescript.org/packages/purescript-snabbare/badge)](https://pursuit.purescript.org/packages/purescript-snabbare)
 [![Maintainer: aryzach](https://img.shields.io/badge/maintainer-aryzach-blue)](https://github.com/aryzach)
 
-A PureScript virtual DOM library with an Elm-like interface based on Snabbdom.
+A PureScript virtual DOM library with an Elm-like interface based on Snabbare.
 
 [Docs](https://pursuit.purescript.org/packages/purescript-snabbare)
 

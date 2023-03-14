@@ -6,13 +6,13 @@ import Snabbare.ModifierLibrary (Modifiers, SnabbareModifiers, UpdateAndView, cr
 
 foreign import data ThunkArgs :: Type 
 
-foreign import data SnabbdomVNode :: Type
+foreign import data SnabbareVNode :: Type
 
 foreign import createThunkArgs_ :: forall a msg. Fn3 (a -> Element a msg) a (UpdateAndView msg) ThunkArgs 
 createThunkArgs :: forall a msg. (a -> Element a msg) -> a -> UpdateAndView msg -> ThunkArgs 
 createThunkArgs = runFn3 createThunkArgs_
 
-type JsElementDecorator = SnabbdomVNode -> SnabbdomVNode 
+type JsElementDecorator = SnabbareVNode -> SnabbareVNode 
 
 data Element a msg
     = Element { tag :: String, modifiers :: Modifiers msg, children :: (ElementChildren a msg) } 

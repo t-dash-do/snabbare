@@ -1,4 +1,4 @@
-module Snabbare.SnabbdomLibrary where
+module Snabbare.SnabbareLibrary where
 
 import Prelude (bind, map, pure, ($))
 import Data.Function.Uncurried (Fn3, Fn4, runFn3, runFn4)
@@ -10,20 +10,20 @@ import Unsafe.Coerce (unsafeCoerce)
 import Web.DOM as Web
 
 import Snabbare.ModifierLibrary (SnabbareModifiers, UpdateAndView, createSnabbareModifiers)
-import Snabbare.Element (Element(..), ThunkArgs, createThunkArgs, JsElementDecorator, SnabbdomVNode)
+import Snabbare.Element (Element(..), ThunkArgs, createThunkArgs, JsElementDecorator, SnabbareVNode)
 
 
-type ThunkPurescript a msg = forall a msg. (a -> Element a msg) -> a -> UpdateAndView msg -> SnabbdomVNode
+type ThunkPurescript a msg = forall a msg. (a -> Element a msg) -> a -> UpdateAndView msg -> SnabbareVNode
 
 -- FFI
-foreign import patch_ :: EffectFn2 SnabbdomVNode SnabbdomVNode SnabbdomVNode
-foreign import patchInit_ :: EffectFn2 Web.Element SnabbdomVNode SnabbdomVNode
-foreign import h_ :: Fn3 String SnabbareModifiers (Array SnabbdomVNode) SnabbdomVNode
+foreign import patch_ :: EffectFn2 SnabbareVNode SnabbareVNode SnabbareVNode
+foreign import patchInit_ :: EffectFn2 Web.Element SnabbareVNode SnabbareVNode
+foreign import h_ :: Fn3 String SnabbareModifiers (Array SnabbareVNode) SnabbareVNode
 foreign import querySelector_ :: EffectFn1 String (Nullable.Nullable Web.Element)
-foreign import thunkJavascript_ :: forall a msg. Fn4 String String (ThunkPurescript a msg) ThunkArgs SnabbdomVNode
+foreign import thunkJavascript_ :: forall a msg. Fn4 String String (ThunkPurescript a msg) ThunkArgs SnabbareVNode
 
 {-
-foreign import JsElementDecoratorToVNode :: JsElementDecorator -> SnabbdomVNode
+foreign import JsElementDecoratorToVNode :: JsElementDecorator -> SnabbareVNode
 type JsElementDecorator
     :: ∀ a msg.
         { element ::
@@ -35,16 +35,16 @@ type JsElementDecorator
     -> 
 -}
 
-h :: String -> SnabbareModifiers -> (Array SnabbdomVNode) -> SnabbdomVNode
+h :: String -> SnabbareModifiers -> (Array SnabbareVNode) -> SnabbareVNode
 h = runFn3 h_
 
-thunkJavascript :: forall a msg. String -> String -> (ThunkPurescript a msg) -> ThunkArgs -> SnabbdomVNode
+thunkJavascript :: forall a msg. String -> String -> (ThunkPurescript a msg) -> ThunkArgs -> SnabbareVNode
 thunkJavascript = runFn4 thunkJavascript_
 
-patchInit :: Web.Element -> SnabbdomVNode -> Effect SnabbdomVNode
+patchInit :: Web.Element -> SnabbareVNode -> Effect SnabbareVNode
 patchInit = runEffectFn2 patchInit_ 
 
-patch :: SnabbdomVNode -> SnabbdomVNode -> Effect SnabbdomVNode
+patch :: SnabbareVNode -> SnabbareVNode -> Effect SnabbareVNode
 patch = runEffectFn2 patch_ 
 
 
@@ -57,7 +57,7 @@ querySelector s = do
   pure $ Nullable.toMaybe q
 
 
-elementToVNode :: forall a msg. UpdateAndView msg -> Element a msg -> SnabbdomVNode
+elementToVNode :: forall a msg. UpdateAndView msg -> Element a msg -> SnabbareVNode
 elementToVNode updateAndView (Element { tag, modifiers, children }) = 
     h
         tag

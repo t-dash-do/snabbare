@@ -40,3 +40,6 @@ build-input-example:
 run-input-example:
 	docker run -p 8080:8080 -it test-example /bin/bash
 
+watch:
+	npx spago test \
+		-wlu "-- --stash --censor-warnings --censor-stats --censor-codes=ImplicitImport,UnusedExplicitImport"

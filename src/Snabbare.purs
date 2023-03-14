@@ -1,6 +1,6 @@
 module Snabbare (module Public) where
 
-import Snabbare.SnabbdomLibrary ( 
+import Snabbare.SnabbareLibrary ( 
   patchInit,
   patch,
   elementToVNode,

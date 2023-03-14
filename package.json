@@ -1,13 +1,13 @@
 {
   "name": "snabbare",
   "version": "1.0.0",
-  "description": "A Purescript wrapper the Snabbdom virtual DOM library with an Elm-like API",
+  "description": "A Purescript wrapper the Snabbare virtual DOM library with an Elm-like API",
   "main": "index.js",
   "author": "T-Do, Inc.",
   "license": "MIT",
   "dependencies": {
     "purescript": "^0.14.9",
-    "snabbdom": "^3.5.1"
+    "snabbare": "^3.5.1"
   },
   "devDependencies": {
     "pulp": "^12.3.0"
