@@ -62,13 +62,30 @@ const createSnabbareModifier = function(updateAndView, acc, modifier) {
         case "key":
             data.key = value;
             break;
+        case "messageHook":
+            data.hook = data.hook || {};
+
+            let f = () => {
+                updateAndView(value)();
+                return null;
+            }
+
+            if (!(key in data)){
+                data.hook[key] = f
+            } else {
+                data.hook[key] = () => {
+                    data.hook[key]();
+                    f();
+                    return null;
+                }
+            }
         case "form":
             data.on = data.on || {};
-            data.on[key] = [callForm, updateAndView, value];
+            data.on[key] = event => updateAndView(value(event)())()
             break;
         case "mouse":
             data.on = data.on || {};
-            data.on[key] = [callMouse, updateAndView, value];
+            data.on[key] = () => updateAndView(value)();
             break;
         case "style":
             data.style = data.style || {};
@@ -77,11 +94,3 @@ const createSnabbareModifier = function(updateAndView, acc, modifier) {
     }
     return data;
 }
-
-const callForm = function(send, fn, event) {
-  send(fn(event)())();
-};
-
-const callMouse = function(send, msg, notUsed) {
-  send(msg)();
-};

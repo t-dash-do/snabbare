@@ -236,3 +236,4 @@ import Snabbare.Tag (
   wbr
   ) as Public
 
+import Snabbare.Hook as Public

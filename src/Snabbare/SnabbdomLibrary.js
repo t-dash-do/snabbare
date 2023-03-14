@@ -1,13 +1,18 @@
-import * as snabbdom from 'snabbdom';
-const h = snabbdom.h;
+import {
+  init,
+  classModule,
+  propsModule,
+  styleModule,
+  eventListenersModule,
+  h,
+} from "snabbdom";
 
-const patch = snabbdom.init([
-  require('snabbdom/modules/attributes').default,
-  require('snabbdom/modules/props').default,
-  require('snabbdom/modules/eventlisteners').default,
-  require('snabbdom/modules/style').default,
+const patch = init([
+  classModule,
+  propsModule,
+  styleModule,
+  eventListenersModule,
 ]);
-
 export const querySelector_ = document.querySelector.bind(document);
 
 export const h_ = function(name, data, children) {

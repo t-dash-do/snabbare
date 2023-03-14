@@ -1,10 +1,15 @@
 module Snabbare.ModifierLibrary where
 
 import Prelude 
-import Effect (Effect)
-import Data.Function.Uncurried (Fn2, Fn3, runFn2, runFn3)
-import Web.Event.Event (Event)
 import Data.Tuple (Tuple(..))
+
+import Data.Function.Uncurried (Fn2, Fn3, runFn2, runFn3)
+import Effect (Effect)
+
+import Web.Event.Event (Event)
+import Web.DOM.Node (Node)
+
+import Web.DOM.Node (Node)
 
 type UpdateAndView msg = msg -> Effect Unit
 
@@ -23,7 +28,6 @@ instance functorModifier :: Functor Modifier where
     map = runFn2 mapModifier_ 
 type Modifiers msg = Array (Modifier msg)
 
-
 -- not sure if I should (show value), need to dig in and decide how I want to structure this
 property :: forall msg a. (Show a) => String -> a -> Modifier msg
 property = runFn3 createModifier_ "property" 
@@ -33,6 +37,12 @@ attribute = runFn3 createModifier_ "attribute"
 
 key :: forall msg. String -> Modifier msg
 key = runFn3 createModifier_ "key" ""
+
+messageHook :: forall msg. String -> msg -> Modifier msg
+messageHook eventTypeStr = runFn3 createModifier_ "messageHook" eventTypeStr
+
+-- TODO: domModifierHook :: forall msg. String -> () -> Modifier msg
+-- TODO: domToMsgHook :: forall msg. String -> () -> Modifier msg
 
 onForm :: forall msg. String -> (Event -> Effect msg) -> Modifier msg
 onForm = runFn3 createModifier_ "form" 
