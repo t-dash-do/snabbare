@@ -6,6 +6,8 @@ export const createModifier_ = function(type, key, value) {
     };
 };
 
+export const eventVnodeToNode = x => x.elm;
+
 export const mapModifier_ = function(fn, modifier) {
     const type  = modifier.type;
     const key   = modifier.key;
@@ -80,19 +82,19 @@ const createSnabbareModifier = function(updateAndView, acc, modifier) {
                 }
             }
         // Refector this along with corresponding purs
-        case "onVnodeAndEvent":
+        case "on":
             data.on = data.on || {};
             data.on[key] = (event, vnode) => updateAndView(value(event)(vnode)())()
             break;
 
-        case "form":
-            data.on = data.on || {};
-            data.on[key] = event => updateAndView(value(event)())()
-            break;
-        case "mouse":
-            data.on = data.on || {};
-            data.on[key] = () => updateAndView(value)();
-            break;
+        // case "form":
+        //     data.on = data.on || {};
+        //     data.on[key] = event => updateAndView(value(event)())()
+        //     break;
+        // case "mouse":
+        //     data.on = data.on || {};
+        //     data.on[key] = () => updateAndView(value)();
+        //     break;
         case "style":
             data.style = data.style || {};
             data.style[key] = value;
