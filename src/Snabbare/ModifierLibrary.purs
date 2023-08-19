@@ -43,9 +43,15 @@ messageHook eventTypeStr = runFn3 createModifier_ "messageHook" eventTypeStr
 
 -- TODO: domModifierHook :: forall msg. String -> () -> Modifier msg
 -- TODO: domToMsgHook :: forall msg. String -> () -> Modifier msg
+-- TODO: clean up the names for 'on' helper functions, see how much "form" and "mouse" actually matter
 
 onForm :: forall msg. String -> (Event -> Effect msg) -> Modifier msg
 onForm = runFn3 createModifier_ "form" 
+
+foreign import data EventVnode :: Type
+
+onHandleVnodeAndEvent :: forall msg. String -> (Event -> EventVnode -> Effect msg) -> Modifier msg
+onHandleVnodeAndEvent = runFn3 createModifier_ "form" 
 
 onMouse :: forall msg. String -> msg -> Modifier msg
 onMouse = runFn3 createModifier_ "mouse" 

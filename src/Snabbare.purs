@@ -15,7 +15,8 @@ import Snabbare.ModifierLibrary (
   property,
   style,
   onForm,
-  onMouse
+  onMouse,
+  onHandleVnodeAndEvent
   ) as Public
 
 import Snabbare.ElementConstructors (
