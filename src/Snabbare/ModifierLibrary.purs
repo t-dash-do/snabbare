@@ -51,7 +51,7 @@ onForm = runFn3 createModifier_ "form"
 foreign import data EventVnode :: Type
 
 onHandleVnodeAndEvent :: forall msg. String -> (Event -> EventVnode -> Effect msg) -> Modifier msg
-onHandleVnodeAndEvent = runFn3 createModifier_ "form" 
+onHandleVnodeAndEvent = runFn3 createModifier_ "onVnodeAndEvent" 
 
 onMouse :: forall msg. String -> msg -> Modifier msg
 onMouse = runFn3 createModifier_ "mouse" 

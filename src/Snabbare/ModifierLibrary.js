@@ -79,6 +79,12 @@ const createSnabbareModifier = function(updateAndView, acc, modifier) {
                     return null;
                 }
             }
+        // Refector this along with corresponding purs
+        case "onVnodeAndEvent":
+            data.on = data.on || {};
+            data.on[key] = (event, vnode) => updateAndView(value(event)(vnode)())()
+            break;
+
         case "form":
             data.on = data.on || {};
             data.on[key] = event => updateAndView(value(event)())()
