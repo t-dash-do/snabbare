@@ -13,7 +13,9 @@ const patch = init([
   styleModule,
   eventListenersModule,
 ]);
-export const querySelector_ = document.querySelector.bind(document);
+export const querySelector_ = query => {
+    return document.querySelector.call(document, query);
+}
 
 export const h_ = function(name, data, children) {
     const v = h(name, data, children);
