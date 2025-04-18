@@ -2,6 +2,7 @@ import {
   init,
   classModule,
   propsModule,
+  attributesModule,
   styleModule,
   eventListenersModule,
   h,
@@ -10,6 +11,7 @@ import {
 const patch = init([
   classModule,
   propsModule,
+  attributesModule,
   styleModule,
   eventListenersModule,
 ]);
