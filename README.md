@@ -2,13 +2,9 @@
 
 ![GitHub](https://img.shields.io/github/license/aryzach/purescript-snabbare)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/aryzach/purescript-snabbare)
-[![Pursuit](https://pursuit.purescript.org/packages/purescript-snabbare/badge)](https://pursuit.purescript.org/packages/purescript-snabbare)
 [![Maintainer: aryzach](https://img.shields.io/badge/maintainer-aryzach-blue)](https://github.com/aryzach)
 
-A PureScript virtual DOM library with an Elm-like interface based on Snabbare.
-
-[Docs](https://pursuit.purescript.org/packages/purescript-snabbare)
-
+A PureScript virtual DOM library with an Elm-like interface based on Snabbdom.
 
 ### The general use of this library: 
 - build up an `Element` which constists of 
@@ -25,4 +21,3 @@ A PureScript virtual DOM library with an Elm-like interface based on Snabbare.
 ### Examples
 To see an example, run `make build-input-example` then `make run-input-example`, then go to `localhost:8080`
 Following the Dockerfile-example file, you can see how to go from `spago init` to using this library in a project
-
