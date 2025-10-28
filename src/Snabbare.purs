@@ -1,10 +1,10 @@
 module Snabbare (module Public) where
 
-import Snabbare.SnabbareLibrary ( 
+import Snabbare.SnabbareLibrary (
   patchInit,
   patch,
   elementToVNode,
-  querySelector 
+  querySelector
   ) as Public
 
 import Snabbare.ModifierLibrary (
@@ -91,11 +91,12 @@ import Snabbare.Property (
   type',
   useMap,
   value,
-  wrap 
+  wrap
   ) as Public
 
 import Snabbare.Attribute (
   allow,
+  autocapitalize,
   cols,
   colspan,
   crossorigin,
@@ -117,7 +118,7 @@ import Snabbare.Attribute (
   manifest,
   media,
   pubdate,
-  rel 
+  rel
   ) as Public
 
 import Snabbare.OnMouse (

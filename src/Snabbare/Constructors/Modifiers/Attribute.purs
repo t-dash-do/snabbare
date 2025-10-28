@@ -9,6 +9,9 @@ type AttributeInt = forall msg. Int -> Modifier msg
 allow :: AttributeString
 allow = attribute "allow" <<< show
 
+autocapitalize :: AttributeString
+autocapitalize = attribute "autocapitalize" <<< show
+
 cols :: AttributeInt
 cols = attribute "cols" <<< show
 
