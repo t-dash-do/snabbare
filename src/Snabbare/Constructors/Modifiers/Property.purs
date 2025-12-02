@@ -172,6 +172,8 @@ srcdoc = property "srcdoc"
 srclang :: StringProperty
 srclang = property "srclang"
 
+srcset :: StringProperty
+srcset = property "srcset"
 step :: StringProperty
 step = property "step"
 

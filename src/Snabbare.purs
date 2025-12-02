@@ -84,6 +84,7 @@ import Snabbare.Property (
   shape,
   src,
   srcdoc,
+  srcset,
   srclang,
   step,
   target,
