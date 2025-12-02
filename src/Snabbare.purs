@@ -207,6 +207,7 @@ import Snabbare.Tag (
   p,
   param,
   pre,
+  picture,
   progress,
   q,
   rp,
