@@ -24,8 +24,14 @@ export const mapModifier_ = function(fn, modifier) {
 
         case "mouse":
             return Object.assign({}, modifier, { value: fn(value) });
+
+        case "on":
+            return Object.assign({}, modifier, { value: (event) => (vnode) => () => fn(value(event)(vnode)()) });
+
+        case "messageHook":
+            return Object.assign({}, modifier, { value: fn(value) });
     };
-    
+
     return modifier;
 };
 
@@ -72,16 +78,17 @@ const createSnabbareModifier = function(updateAndView, acc, modifier) {
                 return null;
             }
 
-            if (!(key in data)){
+            if (!(key in data.hook)){
                 data.hook[key] = f
             } else {
+                const prev = data.hook[key];
                 data.hook[key] = () => {
-                    data.hook[key]();
+                    prev();
                     f();
                     return null;
                 }
             }
-        // Refector this along with corresponding purs
+            break;
         case "on":
             data.on = data.on || {};
             data.on[key] = (event, vnode) => updateAndView(value(event)(vnode)())()

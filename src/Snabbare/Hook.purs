@@ -13,8 +13,8 @@ createMsg = messageHook "create"
 insertMsg :: ∀ msg. msg -> Modifier msg
 insertMsg = messageHook "insert"
 
-prepathMsg :: ∀ msg. msg -> Modifier msg
-prepathMsg = messageHook "prepath"
+prepatchMsg :: ∀ msg. msg -> Modifier msg
+prepatchMsg = messageHook "prepatch"
  
 updateMsg :: ∀ msg. msg -> Modifier msg
 updateMsg = messageHook "update"
