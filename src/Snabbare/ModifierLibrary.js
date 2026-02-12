@@ -53,19 +53,19 @@ const createSnabbareModifier = function(updateAndView, acc, modifier) {
     switch (type) {
         case "attribute":
             data.attrs = data.attrs || {};
-            data.attrs[key] = value;
+            if (key === 'class') {
+                if (data.attrs.class) {
+                    data.attrs.class += ' ' + value;
+                } else {
+                    data.attrs.class = value;
+                }
+            } else {
+                data.attrs[key] = value;
+            }
             break;
         case "property":
             data.props = data.props || {};
-            if (key === 'className') {
-                if (data.props.className) {
-                    data.props.className += ' ' + value;
-                } else {
-                    data.props.className = value;
-                }
-            } else {
-                data.props[key] = value
-            }
+            data.props[key] = value;
             break;
         case "key":
             data.key = value;

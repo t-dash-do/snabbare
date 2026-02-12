@@ -1,7 +1,5 @@
 module Snabbare.Hook where
 
-import Prelude
-
 import Snabbare.ModifierLibrary (messageHook, Modifier)
 
 initMsg :: ∀ msg. msg -> Modifier msg

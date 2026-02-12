@@ -7,10 +7,10 @@ type AttributeString = forall msg. String -> Modifier msg
 type AttributeInt = forall msg. Int -> Modifier msg
 
 allow :: AttributeString
-allow = attribute "allow" <<< show
+allow = attribute "allow"
 
 autocapitalize :: AttributeString
-autocapitalize = attribute "autocapitalize" <<< show
+autocapitalize = attribute "autocapitalize"
 
 cols :: AttributeInt
 cols = attribute "cols" <<< show
@@ -19,7 +19,7 @@ colspan :: AttributeInt
 colspan = attribute "colspan" <<< show
 
 crossorigin :: AttributeString
-crossorigin = attribute "crossorigin" <<< show
+crossorigin = attribute "crossorigin"
 
 frameborder :: AttributeInt
 frameborder = attribute "frameborder" <<< show

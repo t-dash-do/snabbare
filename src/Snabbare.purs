@@ -241,4 +241,4 @@ import Snabbare.Tag (
   wbr
   ) as Public
 
-import Snabbare.Hook as Public
+import Snabbare.Hook (createMsg, destroyMsg, initMsg, insertMsg, postpatchMsg, prepatchMsg, removeMsg, updateMsg) as Public

@@ -1,14 +1,11 @@
 module Snabbare.ModifierLibrary where
 
 import Prelude 
-import Data.Tuple (Tuple(..))
 
 import Data.Function.Uncurried (Fn2, Fn3, runFn2, runFn3)
 import Effect (Effect)
 
 import Web.Event.Event (Event)
-import Web.DOM.Node (Node)
-
 import Web.DOM.Node (Node)
 
 type UpdateAndView msg = msg -> Effect Unit

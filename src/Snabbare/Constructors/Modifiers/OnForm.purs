@@ -4,11 +4,10 @@ import Prelude
 import Web.Event.Event as Event
 
 import Control.Alt ((<|>))
-import Data.Maybe (Maybe(..), fromMaybe, maybe)
+import Data.Maybe (Maybe, fromMaybe)
 import Effect (Effect)
 import Web.DOM.Node (Node)
 import Web.DOM.Node as Node
-import Web.Event.Event as Event
 import Web.HTML.HTMLInputElement as HTMLInputElement
 import Web.HTML.HTMLTextAreaElement as HTMLTextAreaElement
 
