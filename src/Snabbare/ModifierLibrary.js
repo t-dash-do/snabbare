@@ -91,7 +91,15 @@ const createSnabbareModifier = function(updateAndView, acc, modifier) {
             break;
         case "on":
             data.on = data.on || {};
-            data.on[key] = (event, vnode) => updateAndView(value(event)(vnode)())()
+            if (!(key in data.on)) {
+                data.on[key] = (event, vnode) => updateAndView(value(event)(vnode)())()
+            } else {
+                const prev = data.on[key];
+                data.on[key] = (event, vnode) => {
+                    prev(event, vnode);
+                    updateAndView(value(event)(vnode)())();
+                }
+            }
             break;
 
         // case "form":
